@@ -24,6 +24,7 @@ export default function DashboardScreen({ navigation }) {
     })();
   }, []);
 
+  
   return (
     <>
       <SpecifiedView className="bg-white h-[100%]">
