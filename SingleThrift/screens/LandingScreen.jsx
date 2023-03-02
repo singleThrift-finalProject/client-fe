@@ -1,17 +1,30 @@
-import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
+import landItem from "../landItem";
+import LandingItem from "../components/LandingItem";
 import SpecifiedView from "../components/SpecifiedView";
-const LandingScreen = () => {
+
+export default function Landing({ navigation }) {
+
     return (
         <SpecifiedView>
-            <ScrollView>
-                <View>
-                   <Text>
-                    ini landing Screen
-                   </Text>
-                </View>
-            </ScrollView>
+            <View style={styles.container}>
+                <FlatList
+                    data={landItem}
+                    renderItem={({ item }) => <LandingItem navigation={navigation} item={item} />}
+                    showsHorizontalScrollIndicator
+                    pagingEnabled
+                    bounces={false}
+                    keyExtractor={(item) => item.id}
+                />
+            </View>
         </SpecifiedView>
-    );
-};
+    )
+}
 
-export default LandingScreen
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+});
