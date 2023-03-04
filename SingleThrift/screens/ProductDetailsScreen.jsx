@@ -1,14 +1,10 @@
-import { View } from "react-native/types";
-import SpecifiedView from "../components/SpecifiedView";
+import { Text } from 'react-native';
+import SpecifiedView from '../components/SpecifiedView';
 
 export default function ProductDetailsScreen() {
-    return (
-        <SpecifiedView>
-            <View>
-                <Text>
-                    ini Detail pages
-                </Text>
-            </View>
-        </SpecifiedView>
-    )
+  return (
+    <SpecifiedView>
+      <Text>ini Detail pages</Text>
+    </SpecifiedView>
+  );
 }
