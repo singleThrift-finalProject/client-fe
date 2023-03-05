@@ -6,8 +6,9 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
+import SpecifiedView from '../components/SpecifiedView';
 
-export default function Landing({ navigation }) {
+export default function LandingScreen({ navigation }) {
   let [fontsLoaded] = useFonts({
     Inter_900Black,
   });
@@ -17,7 +18,7 @@ export default function Landing({ navigation }) {
   }
 
   return (
-    <View className="bg-white h-full">
+    <SpecifiedView className="bg-white h-full">
       <ImageBackground
         className="h-[400]"
         source={require('../assets/images/landing-screen-bg.png')}
@@ -64,6 +65,6 @@ export default function Landing({ navigation }) {
           </Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </SpecifiedView>
   );
 }
