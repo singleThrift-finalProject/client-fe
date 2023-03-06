@@ -1,23 +1,21 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from '../screens/HomeScreen';
-import { Text, TouchableOpacity, Image, View } from 'react-native';
-// import ExploreDrawerScreen from './ExploreDraweScreen';
+import { Text, Image, View } from 'react-native';
+import DashboardScreen from '../screens/DashboardScreen';
 
-const Stack = createNativeStackNavigator();
+export default function DashboardStackScreen() {
+  const Stack = createNativeStackNavigator();
 
-export default function ExploreStackScreen() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Home"
-        component={HomeScreen}
+        name="Dashboard Screen"
+        component={DashboardScreen}
         options={({ navigation }) => ({
           headerLeft: () => (
             <Image
               source={require('../assets/icons/category-bar.png')}
               className="h-[12] w-[18] ml-[30]"
             />
-            // <ExploreDrawerScreen />
           ),
           headerTitle: () => (
             <Text
@@ -36,14 +34,6 @@ export default function ExploreStackScreen() {
                 source={require('../assets/icons/chat.png')}
                 className="w-[19] h-[18]"
               />
-              <TouchableOpacity
-                onPress={() => navigation.navigate('CartScreen')}
-              >
-                <Image
-                  source={require('../assets/icons/cart.png')}
-                  className="w-[21] h-[20]"
-                />
-              </TouchableOpacity>
             </View>
           ),
         })}
