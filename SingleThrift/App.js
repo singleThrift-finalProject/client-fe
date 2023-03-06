@@ -1,3 +1,4 @@
+// import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LandingScreen from './screens/LandingScreen';
@@ -8,6 +9,11 @@ import ProductDetailScreen from './screens/ProductDetailScreen';
 import CartScreen from './screens/CartScreen';
 import HomeTabScreen from './components/HomeTabScreen';
 import PaymentSuccessScreen from './screens/PaymentSuccess';
+import DashboardTabScreen from './components/DashboardTabScreen';
+import OrderListScreen from './screens/OrderListScreen';
+import ProductSellerDetailScreen from './screens/ProductSellerDetailScreen';
+import EditProductScreen from './screens/EditProductScreen';
+import AddProductScreen from './screens/AddProductScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -157,6 +163,97 @@ export default function App() {
           options={{
             headerShown: false,
           }}
+        />
+        <Stack.Screen
+          name="DashboardTabScreen"
+          component={DashboardTabScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="ProductSellerDetailScreen"
+          component={ProductSellerDetailScreen}
+          options={({ navigation }) => ({
+            headerLeft: () => (
+              <TouchableOpacity
+                onPress={() => navigation.navigate('DashboardTabScreen')}
+              >
+                <Image
+                  source={require('./assets/icons/chevron-back-pink.png')}
+                  className="h-[17] w-[10] ml-[30]"
+                />
+              </TouchableOpacity>
+            ),
+            headerTitle: '',
+            headerTitleAlign: 'center',
+            headerRight: () => (
+              <Text
+                className="pr-[30]"
+                style={{
+                  fontFamily: 'Inter_900Black',
+                }}
+              >
+                Detail Product
+              </Text>
+            ),
+          })}
+        />
+        <Stack.Screen
+          name="EditProductScreen"
+          component={EditProductScreen}
+          options={({ navigation }) => ({
+            headerLeft: () => (
+              <TouchableOpacity
+                onPress={() => navigation.navigate('DashboardTabScreen')}
+              >
+                <Image
+                  source={require('./assets/icons/chevron-back-pink.png')}
+                  className="h-[17] w-[10] ml-[30]"
+                />
+              </TouchableOpacity>
+            ),
+            headerTitle: '',
+            headerTitleAlign: 'center',
+            headerRight: () => (
+              <Text
+                className="pr-[30]"
+                style={{
+                  fontFamily: 'Inter_900Black',
+                }}
+              >
+                Edit Product
+              </Text>
+            ),
+          })}
+        />
+        <Stack.Screen
+          name="AddProductScreen"
+          component={AddProductScreen}
+          options={({ navigation }) => ({
+            headerLeft: () => (
+              <TouchableOpacity
+                onPress={() => navigation.navigate('DashboardTabScreen')}
+              >
+                <Image
+                  source={require('./assets/icons/chevron-back-pink.png')}
+                  className="h-[17] w-[10] ml-[30]"
+                />
+              </TouchableOpacity>
+            ),
+            headerTitle: '',
+            headerTitleAlign: 'center',
+            headerRight: () => (
+              <Text
+                className="pr-[30]"
+                style={{
+                  fontFamily: 'Inter_900Black',
+                }}
+              >
+                Add Product
+              </Text>
+            ),
+          })}
         />
       </Stack.Navigator>
     </NavigationContainer>
