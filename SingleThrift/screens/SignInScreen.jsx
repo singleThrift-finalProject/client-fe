@@ -14,6 +14,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLogin } from '../actions/actionCreator';
+import { BASE_URL_NGROK } from '../actions/actionType';
 
 export default function SignInScreen({ navigation }) {
   // let [fontsLoaded] = useFonts({
@@ -24,7 +25,7 @@ export default function SignInScreen({ navigation }) {
   // }
 
   const { isLoadingSetToken, token, error } = useSelector(
-    (state) => state.token
+    (state) => state.login
   );
   const dispatch = useDispatch();
 
@@ -39,31 +40,24 @@ export default function SignInScreen({ navigation }) {
     });
   };
 
-  // useEffect(() => {
-  //   (async () => {
+  // const handleSubmit = async () => {
+  //   try {
   //     await dispatch(setLogin(inputValues));
-  //   })();
-  // }, []);
-
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   const handleSubmit = async () => {
     try {
-      dispatch(setLogin(inputValues));
-      // const { data } = await axios.post(
-      //   'https://095d-120-188-32-141.ap.ngrok.io/users/login',
-      //   inputValues
-      // );
-      // await AsyncStorage.setItem(
-      //   'access_token',
-      //   JSON.stringify(data.access_token)
-      // );
-      // await AsyncStorage.setItem('role', JSON.stringify(data.role));
-      // const getRole = await AsyncStorage.getItem('role');
-      // const role = JSON.parse(getRole);
-      // if (role === 'buyer') {
-      //   navigation.navigate('HomeTabScreen');
-      // } else {
-      //   navigation.navigate('DashboardTabScreen');
-      // }
+      // await dispatch(setLogin(inputValues));
+      const { data } = await axios.post(
+        `${BASE_URL_NGROK}/users/login`,
+        inputValues
+      );
+      // console.log(data);
+      await AsyncStorage.setItem('access_token', JSON.stringify(data));
+      const token = JSON.parse(await AsyncStorage.getItem('access_token'));
+      console.log(token.access_token);
     } catch (error) {
       console.log(error);
     }

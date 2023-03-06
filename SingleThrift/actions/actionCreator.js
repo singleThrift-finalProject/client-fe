@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
   LOGIN_SETLOGIN_PENDING,
   LOGIN_SETLOGIN_SUCCESS,
@@ -10,38 +11,27 @@ export const setLoginPending = () => {
     type: LOGIN_SETLOGIN_PENDING,
   };
 };
-export const setLoginSuccess = () => {
+export const setLoginSuccess = (data) => {
   return {
     type: LOGIN_SETLOGIN_SUCCESS,
+    payload: data,
   };
 };
-export const setLoginFail = () => {
-  console.log('masuk fail kayaknya ???');
+export const setLoginFail = (data) => {
   return {
     type: LOGIN_SETLOGIN_FAIL,
+    payload: data,
   };
 };
-export const setLogin = (data) => {
-  console.log(data, '<--');
+export const setLogin = (dataForm) => {
   return async (dispatch, _) => {
     try {
       dispatch(setLoginPending);
-      const response = await fetch(`${BASE_URL_NGROK}/users/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-      console.log(response);
-      // if (!response.ok) {
-      //   const responseJson = await response.json();
-      //   console.log(responseJson, '<<!');
-      //   dispatch(setLoginFail(responseJson));
-      // }
-      // const responseJson = await response.json();
-      // console.log(responseJson, '<<v');
-      // dispatch(setLoginSuccess(responseJson));
+      const { data } = await axios.post(
+        `${BASE_URL_NGROK}/users/login`,
+        dataForm
+      );
+      dispatch(setLoginSuccess(data));
     } catch (error) {
       dispatch(setLoginFail(error));
     }
