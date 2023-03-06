@@ -1,14 +1,15 @@
 import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-// import TransactionScreen from '../screens/TransactionScreen';
 import ExploreStackScreen from './ExploreStackScreen';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import TransactionMTScreen from './TransactionMTScreen';
 import { TouchableOpacity, Image, Text } from 'react-native';
+import DashboardStackScreen from './DashboardStackScreen';
+import OrderListScreen from '../screens/OrderListScreen';
 
 const Tab = createBottomTabNavigator();
 
-export default function HomeTabScreen() {
+export default function DashboardTabScreen() {
   let [fontsLoaded] = useFonts({
     Inter_900Black,
   });
@@ -24,9 +25,9 @@ export default function HomeTabScreen() {
           let iconName;
           size = 20;
 
-          if (route.name === 'Explore') {
-            iconName = focused ? 'rocket' : 'rocket-outline';
-          } else if (route.name === 'Transaction') {
+          if (route.name === 'Dashboard') {
+            iconName = focused ? 'apps' : 'apps-outline';
+          } else if (route.name === 'Order List') {
             iconName = focused ? 'receipt' : 'receipt-outline';
           }
 
@@ -51,18 +52,18 @@ export default function HomeTabScreen() {
       })}
     >
       <Tab.Screen
-        name="Explore"
-        component={ExploreStackScreen}
+        name="Dashboard"
+        component={DashboardStackScreen}
         options={{
           headerShown: false,
         }}
       />
       <Tab.Screen
-        name="Transaction"
-        component={TransactionMTScreen}
+        name="Order List"
+        component={OrderListScreen}
         options={({ navigation }) => ({
           headerLeft: () => (
-            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+            <TouchableOpacity onPress={() => navigation.navigate('Dashboard')}>
               <Image
                 source={require('../assets/icons/chevron-back-pink.png')}
                 className="h-[17] w-[10] ml-[30]"
@@ -78,7 +79,7 @@ export default function HomeTabScreen() {
                 fontFamily: 'Inter_900Black',
               }}
             >
-              Transaction List
+              Order List
             </Text>
           ),
         })}
