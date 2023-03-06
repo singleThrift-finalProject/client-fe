@@ -10,7 +10,6 @@ import CartScreen from './screens/CartScreen';
 import HomeTabScreen from './components/HomeTabScreen';
 import PaymentSuccessScreen from './screens/PaymentSuccess';
 import DashboardTabScreen from './components/DashboardTabScreen';
-import OrderListScreen from './screens/OrderListScreen';
 import ProductSellerDetailScreen from './screens/ProductSellerDetailScreen';
 import EditProductScreen from './screens/EditProductScreen';
 import AddProductScreen from './screens/AddProductScreen';
