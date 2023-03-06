@@ -3,9 +3,9 @@ import FailTransactionScreen from '../screens/FailTransactionScreen';
 import PendingTransactionScreen from '../screens/PendingTransactionScreen';
 import SuccessTransactionScreen from '../screens/SuccessTransactionScreen';
 
-const Tab = createMaterialTopTabNavigator();
-
 export default function TransactionMTScreen() {
+  const Tab = createMaterialTopTabNavigator();
+
   return (
     <Tab.Navigator
       screenOptions={{
