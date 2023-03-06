@@ -97,7 +97,7 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator>
-          {isLogin === true ? (
+          {isLogin !== true ? (
             <>
               <Stack.Screen
                 name="LandingScreen"
