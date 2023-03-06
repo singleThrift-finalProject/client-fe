@@ -1,0 +1,501 @@
+{
+    "users": [
+        {
+            "id": 1723,
+            "username": "dimas",
+            "email": "dimas28@email.com",
+            "password": "lajsdalduy1o9318749olhk",
+            "address": "diruma",
+            "role": "Admin",
+            "status": "Active"
+        },
+        {
+            "id": 1233,
+            "username": "bagas",
+            "email": "bagas@email.com",
+            "password": "klAHSDlkjhasdjkhaksdhjad",
+            "address": "disini",
+            "role": "Admin",
+            "status": "Active"
+        },
+        {
+            "id": 1423,
+            "username": "jeane",
+            "email": "jeane@email.com",
+            "password": "klasjduiayd63872kljad",
+            "address": "disitu",
+            "role": "Admin",
+            "status": "Active"
+        },
+        {
+            "id": 1323,
+            "username": "arvin",
+            "email": "arvin@email.com",
+            "password": "ashdkljhao871yl2789",
+            "address": "disana",
+            "role": "Admin",
+            "status": "Active"
+        },
+        {
+            "id": 1123,
+            "username": "yuga",
+            "email": "yuga@email.com",
+            "password": "a.,mshdkahsdkjhad123",
+            "address": "dimari",
+            "role": "Admin",
+            "status": "Active"
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "name": "CANON IXUS 125 HS",
+            "price": 1500000,
+            "weight": 1500,
+            "description": "Kamera digital, merk canon, berat 500gr, warna hitam, charger lengkap, baterai masih oke, Ready siap pakai",
+            "condition": "Like new",
+            "UserId": 1,
+            "CategoryId": 1,
+            "status": "available",
+            "createdAt": "2023-03-06T04:46:08.141Z",
+            "updatedAt": "2023-03-06T04:46:08.141Z",
+            "Images": [
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_a6cdf6bbb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000633_2cd3c6ebb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_3394e2bab_progressive"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "CANON IXUS 125 HS",
+            "price": 1500000,
+            "weight": 1500,
+            "description": "Kamera digital, merk canon, berat 500gr, warna hitam, charger lengkap, baterai masih oke, Ready siap pakai",
+            "condition": "Like new",
+            "UserId": 1,
+            "CategoryId": 1,
+            "status": "available",
+            "createdAt": "2023-03-06T04:46:08.141Z",
+            "updatedAt": "2023-03-06T04:46:08.141Z",
+            "Images": [
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_a6cdf6bbb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000633_2cd3c6ebb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_3394e2bab_progressive"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "CANON IXUS 125 HS",
+            "price": 1500000,
+            "weight": 1500,
+            "description": "Kamera digital, merk canon, berat 500gr, warna hitam, charger lengkap, baterai masih oke, Ready siap pakai",
+            "condition": "Like new",
+            "UserId": 1,
+            "CategoryId": 1,
+            "status": "available",
+            "createdAt": "2023-03-06T04:46:08.141Z",
+            "updatedAt": "2023-03-06T04:46:08.141Z",
+            "Images": [
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_a6cdf6bbb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000633_2cd3c6ebb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_3394e2bab_progressive"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "CANON IXUS 125 HS",
+            "price": 1500000,
+            "weight": 1500,
+            "description": "Kamera digital, merk canon, berat 500gr, warna hitam, charger lengkap, baterai masih oke, Ready siap pakai",
+            "condition": "Like new",
+            "UserId": 1,
+            "CategoryId": 1,
+            "status": "available",
+            "createdAt": "2023-03-06T04:46:08.141Z",
+            "updatedAt": "2023-03-06T04:46:08.141Z",
+            "Images": [
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_a6cdf6bbb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000633_2cd3c6ebb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_3394e2bab_progressive"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "CANON IXUS 125 HS",
+            "price": 1500000,
+            "weight": 1500,
+            "description": "Kamera digital, merk canon, berat 500gr, warna hitam, charger lengkap, baterai masih oke, Ready siap pakai",
+            "condition": "Like new",
+            "UserId": 1,
+            "CategoryId": 1,
+            "status": "available",
+            "createdAt": "2023-03-06T04:46:08.141Z",
+            "updatedAt": "2023-03-06T04:46:08.141Z",
+            "Images": [
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_a6cdf6bbb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000633_2cd3c6ebb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_3394e2bab_progressive"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "CANON IXUS 125 HS",
+            "price": 1500000,
+            "weight": 1500,
+            "description": "Kamera digital, merk canon, berat 500gr, warna hitam, charger lengkap, baterai masih oke, Ready siap pakai",
+            "condition": "Like new",
+            "UserId": 1,
+            "CategoryId": 1,
+            "status": "available",
+            "createdAt": "2023-03-06T04:46:08.141Z",
+            "updatedAt": "2023-03-06T04:46:08.141Z",
+            "Images": [
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_a6cdf6bbb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000633_2cd3c6ebb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_3394e2bab_progressive"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "CANON IXUS 125 HS",
+            "price": 1500000,
+            "weight": 1500,
+            "description": "Kamera digital, merk canon, berat 500gr, warna hitam, charger lengkap, baterai masih oke, Ready siap pakai",
+            "condition": "Like new",
+            "UserId": 1,
+            "CategoryId": 1,
+            "status": "available",
+            "createdAt": "2023-03-06T04:46:08.141Z",
+            "updatedAt": "2023-03-06T04:46:08.141Z",
+            "Images": [
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_a6cdf6bbb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000633_2cd3c6ebb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_3394e2bab_progressive"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "CANON IXUS 125 HS",
+            "price": 1500000,
+            "weight": 1500,
+            "description": "Kamera digital, merk canon, berat 500gr, warna hitam, charger lengkap, baterai masih oke, Ready siap pakai",
+            "condition": "Like new",
+            "UserId": 1,
+            "CategoryId": 1,
+            "status": "available",
+            "createdAt": "2023-03-06T04:46:08.141Z",
+            "updatedAt": "2023-03-06T04:46:08.141Z",
+            "Images": [
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_a6cdf6bbb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000633_2cd3c6ebb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_3394e2bab_progressive"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "CANON IXUS 125 HS",
+            "price": 1500000,
+            "weight": 1500,
+            "description": "Kamera digital, merk canon, berat 500gr, warna hitam, charger lengkap, baterai masih oke, Ready siap pakai",
+            "condition": "Like new",
+            "UserId": 1,
+            "CategoryId": 1,
+            "status": "available",
+            "createdAt": "2023-03-06T04:46:08.141Z",
+            "updatedAt": "2023-03-06T04:46:08.141Z",
+            "Images": [
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_a6cdf6bbb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000633_2cd3c6ebb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_3394e2bab_progressive"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "CANON IXUS 125 HS",
+            "price": 1500000,
+            "weight": 1500,
+            "description": "Kamera digital, merk canon, berat 500gr, warna hitam, charger lengkap, baterai masih oke, Ready siap pakai",
+            "condition": "Like new",
+            "UserId": 1,
+            "CategoryId": 1,
+            "status": "available",
+            "createdAt": "2023-03-06T04:46:08.141Z",
+            "updatedAt": "2023-03-06T04:46:08.141Z",
+            "Images": [
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_a6cdf6bbb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000633_2cd3c6ebb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_3394e2bab_progressive"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "CANON IXUS 125 HS",
+            "price": 1500000,
+            "weight": 1500,
+            "description": "Kamera digital, merk canon, berat 500gr, warna hitam, charger lengkap, baterai masih oke, Ready siap pakai",
+            "condition": "Like new",
+            "UserId": 1,
+            "CategoryId": 1,
+            "status": "available",
+            "createdAt": "2023-03-06T04:46:08.141Z",
+            "updatedAt": "2023-03-06T04:46:08.141Z",
+            "Images": [
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_a6cdf6bbb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000633_2cd3c6ebb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_3394e2bab_progressive"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "CANON IXUS 125 HS",
+            "price": 1500000,
+            "weight": 1500,
+            "description": "Kamera digital, merk canon, berat 500gr, warna hitam, charger lengkap, baterai masih oke, Ready siap pakai",
+            "condition": "Like new",
+            "UserId": 1,
+            "CategoryId": 1,
+            "status": "available",
+            "createdAt": "2023-03-06T04:46:08.141Z",
+            "updatedAt": "2023-03-06T04:46:08.141Z",
+            "Images": [
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_a6cdf6bbb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000633_2cd3c6ebb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_3394e2bab_progressive"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "CANON IXUS 125 HS",
+            "price": 1500000,
+            "weight": 1500,
+            "description": "Kamera digital, merk canon, berat 500gr, warna hitam, charger lengkap, baterai masih oke, Ready siap pakai",
+            "condition": "Like new",
+            "UserId": 1,
+            "CategoryId": 1,
+            "status": "available",
+            "createdAt": "2023-03-06T04:46:08.141Z",
+            "updatedAt": "2023-03-06T04:46:08.141Z",
+            "Images": [
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_a6cdf6bbb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000633_2cd3c6ebb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_3394e2bab_progressive"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "CANON IXUS 125 HS",
+            "price": 1500000,
+            "weight": 1500,
+            "description": "Kamera digital, merk canon, berat 500gr, warna hitam, charger lengkap, baterai masih oke, Ready siap pakai",
+            "condition": "Like new",
+            "UserId": 1,
+            "CategoryId": 1,
+            "status": "available",
+            "createdAt": "2023-03-06T04:46:08.141Z",
+            "updatedAt": "2023-03-06T04:46:08.141Z",
+            "Images": [
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_a6cdf6bbb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000633_2cd3c6ebb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_3394e2bab_progressive"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "CANON IXUS 125 HS",
+            "price": 1500000,
+            "weight": 1500,
+            "description": "Kamera digital, merk canon, berat 500gr, warna hitam, charger lengkap, baterai masih oke, Ready siap pakai",
+            "condition": "Like new",
+            "UserId": 1,
+            "CategoryId": 1,
+            "status": "available",
+            "createdAt": "2023-03-06T04:46:08.141Z",
+            "updatedAt": "2023-03-06T04:46:08.141Z",
+            "Images": [
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_a6cdf6bbb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000633_2cd3c6ebb_progressive"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://media.karousell.com/media/photos/products/2019/08/28/jual_kamera_canon_ixus_125_hs_1567000634_3394e2bab_progressive"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "LOUIS VUITON",
+            "price": 1000000,
+            "weight": 1000,
+            "description": "masi mulus, versi collector, baru 3x pake buat ke acara doang, Ready siap pakai",
+            "condition": "Like new",
+            "UserId": 1,
+            "CategoryId": 5,
+            "status": "available",
+            "createdAt": "2023-03-06T04:46:08.141Z",
+            "updatedAt": "2023-03-06T04:46:08.141Z",
+            "Images": [
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://s1.bukalapak.com/img/12395798502/large/11156793071324038_3b83f263_724e_41f5_b98e_3a4270336bb3_promo.png"
+                },
+                {
+                    "ProductId": 1,
+                    "imageUrl": "https://cf.shopee.co.id/file/cdd7da4eb5f82b1744595bedffa34f4e"
+                }
+            ]
+        }
+    ],
+    "categories": [
+        {
+            "id": 1,
+            "name": "computer"
+        },
+        {
+            "id": 2,
+            "name": "electronic"
+        },
+        {
+            "id": 3,
+            "name": "things"
+        },
+        {
+            "id": 4,
+            "name": "cooking stuff"
+        },
+        {
+            "id": 5,
+            "name": "fashion"
+        }
+    ]
+}

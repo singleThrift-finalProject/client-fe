@@ -1,20 +1,20 @@
 <script>
 export default {
-    
+    props:['user']
 }
 </script>
 
 <template>
     <tr>
             <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-               1
+             {{user.id}}  
             </td>
-            <td class="whitespace-nowrap px-4 py-2 text-gray-700">test</td>
-            <td class="whitespace-nowrap px-4 py-2 text-gray-700">@email.com</td>
-            <td class="whitespace-nowrap px-4 py-2 text-gray-700">superadmin</td>
-            <td class="whitespace-nowrap px-4 py-2 text-gray-700">Active</td>
-            <td class="whitespace-nowrap px-4 py-2 text-gray-700">1283718278948</td>
-            <td class="whitespace-nowrap px-4 py-2 text-gray-700">diruma</td>
+            <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{user.username}}</td>
+            <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{user.email}}</td>
+            <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{user.role}}</td>
+            <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{user.status}}</td>
+            <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{user.phoneNumber}}</td>
+            <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{user.address}}</td>
             <td class="whitespace-nowrap px-4 py-2">
                 <a
                     class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"

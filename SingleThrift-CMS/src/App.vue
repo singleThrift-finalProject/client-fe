@@ -7,7 +7,6 @@ components:{SideBar}
 
 <template>
   <div>
-    <SideBar />
     <router-view></router-view>
   </div>
 </template>
