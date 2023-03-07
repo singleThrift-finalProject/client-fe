@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
 import SpecifiedView from '../components/SpecifiedView';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default function LandingScreen({ navigation }) {
   let [fontsLoaded] = useFonts({
@@ -19,52 +20,55 @@ export default function LandingScreen({ navigation }) {
 
   return (
     <SpecifiedView className="bg-white h-full">
-      <ImageBackground
-        className="h-[400]"
-        source={require('../assets/images/landing-screen-bg.png')}
-      />
-      <Image
-        className="h-[68] w-[68] absolute right-[30] top-[50]"
-        source={require('../assets/images/logo.png')}
-      ></Image>
-      <Text
-        className="text-[32px] text-center py-[60] px-[30] text-primary"
-        style={{
-          fontFamily: 'Inter_900Black',
-        }}
-      >
-        Sell your valuable <Text className="text-secondary">goods</Text> with
-        fun
-      </Text>
+      <ScrollView>
 
-      <View className="flex px-[30] gap-[30]">
-        <TouchableOpacity
-          className="py-[20] rounded-3xl bg-primary shadow-lg shadow-primary"
-          onPress={() => navigation.push('SignUpScreen')}
+        <ImageBackground
+          className="h-[400]"
+          source={require('../assets/images/landing-screen-bg.png')}
+        />
+        <Image
+          className="h-[68] w-[68] absolute right-[30] top-[50]"
+          source={require('../assets/images/logo.png')}
+        ></Image>
+        <Text
+          className="text-[32px] text-center py-[60] px-[30] text-primary"
+          style={{
+            fontFamily: 'Inter_900Black',
+          }}
         >
-          <Text
-            className="text-[14] text-center text-secondaryLight"
-            style={{
-              fontFamily: 'Inter_900Black',
-            }}
+          Sell your valuable <Text className="text-secondary">goods</Text> with
+          fun
+        </Text>
+
+        <View className="flex px-[30] gap-[30]">
+          <TouchableOpacity
+            className="py-[20] rounded-3xl bg-primary shadow-lg shadow-primary"
+            onPress={() => navigation.push('SignUpScreen')}
           >
-            Sign Up
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          className="py-[20] rounded-3xl bg-secondaryLight shadow-lg shadow-secondary"
-          onPress={() => navigation.push('SignInScreen')}
-        >
-          <Text
-            className="text-[14] text-center text-secondary"
-            style={{
-              fontFamily: 'Inter_900Black',
-            }}
+            <Text
+              className="text-[14] text-center text-secondaryLight"
+              style={{
+                fontFamily: 'Inter_900Black',
+              }}
+            >
+              Sign Up
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            className="py-[20] rounded-3xl bg-secondaryLight shadow-lg shadow-secondary"
+            onPress={() => navigation.push('SignInScreen')}
           >
-            Sign In
-          </Text>
-        </TouchableOpacity>
-      </View>
+            <Text
+              className="text-[14] text-center text-secondary"
+              style={{
+                fontFamily: 'Inter_900Black',
+              }}
+            >
+              Sign In
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     </SpecifiedView>
   );
 }
