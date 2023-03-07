@@ -8,10 +8,13 @@ export const useAppStore = defineStore('app', {
     products: [],
     users: [],
     categories: [],
+    bannedUsers: [],
+    detailProduct:{},
     isLogin: false,
     totalData: {},
-    totalPage:0,
-    query: {}
+    totalPage: 0,
+    query: {},
+    email:localStorage.email
   }),
   getters: {
     thisPath() {
@@ -23,11 +26,11 @@ export const useAppStore = defineStore('app', {
       try {
         const { data } = await axios({
           method: "POST",
-          url: `${baseUrl}/customers/login`,
+          url: `${baseUrl}/login`,
           data: form
         })
         localStorage.setItem('access_token', data.access_token)
-        localStorage.setItem('userName', data.userName)
+        localStorage.setItem('email', data.email)
         this.isLogin = true
         console.log(this.isLogin)
         console.log(data, `sksjsjsjsjsjsjjsjsjs DATA USER`)
@@ -39,7 +42,7 @@ export const useAppStore = defineStore('app', {
     },
     async doRegister(form) {
       try {
-        console.log(form,`//////////////`)
+        console.log(form, `//////////////`)
         const { data } = await axios({
           method: "POST",
           url: `${baseUrl}/register`,
@@ -52,7 +55,7 @@ export const useAppStore = defineStore('app', {
     },
     doLogout() {
       localStorage.removeItem('access_token')
-      localStorage.removeItem("userName");
+      localStorage.removeItem("email");
       this.router.replace('/login')
       this.isLogin = false
     },
@@ -75,7 +78,7 @@ export const useAppStore = defineStore('app', {
           url: `${baseUrl}/users`,
           // params: this.query
         })
-        console.log(data,"ini datanya,,,,,,,,")
+        console.log(data, "ini datanya,,,,,,,,")
         this.users = data;
         this.totalData.users = data.length
         console.log(data)
@@ -91,7 +94,7 @@ export const useAppStore = defineStore('app', {
         if (categoryId) {
           this.query.filter = categoryId //number category
         }
-        if(search){
+        if (search) {
           this.query.search = search //by name
         }
         // console.log(pagenum, categoryId)
@@ -100,7 +103,7 @@ export const useAppStore = defineStore('app', {
           url: `${baseUrl}/product`,
           params: this.query
         })
-        console.log(data,`ini ini dataaaaa productsssss`)
+        console.log(data, `ini ini dataaaaa productsssss`)
         this.products = data.data;
         this.totalData.products = data.count
         // this.totalPage = data.
@@ -125,7 +128,7 @@ export const useAppStore = defineStore('app', {
     },
     async addCategory(form) {
       try {
-        console.log(postId, `iniiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii`)
+        console.log(productId, `iniiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii`)
         const { data } = await axios({
           method: "POST",
           url: `${baseUrl}/categories`,
@@ -142,7 +145,7 @@ export const useAppStore = defineStore('app', {
       try {
         const { data } = await axios({
           method: "DELETE",
-          url: `${baseUrl}/categories/${categoryId}`,
+          url: `${baseUrl}/category/${categoryId}`,
           // headers: {
           //   access_token: localStorage.access_token
           // }
@@ -153,26 +156,61 @@ export const useAppStore = defineStore('app', {
         console.log(error)
       }
     },
-    async fetchFavorite() {
+    async getBannedUsers() {
       try {
         const { data } = await axios({
           method: "GET",
-          url: `${baseUrl}/customers/myFavorite`,
-          headers: {
-            access_token: localStorage.access_token
-          }
+          url: `${baseUrl}/banned`,
         })
-        this.products = data;
-        console.log(this.products)
+        console.log(data, "ini datanya,,,,,,,,")
+        this.bannedUsers = data;
+        this.totalData.banned = data.length
+        console.log(data)
       } catch (error) {
         console.log(error)
-        Swal.fire({
-          icon: "error",
-          title: "something happened",
-          text: `${error.response.data.message}`,
-        });
       }
     },
-    
+    async patchStatusUser(status, userId){
+      try {
+        await axios({
+          method: "PATCH",
+          url: `${baseUrl}/users/${userId}`,
+          data: { status: status },
+          // headers: { access_token: localStorage.access_token },
+        });
+        this.getUsers();
+        this.getBannedUsers();
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async getDetailProduct(productId) {
+      try {
+          const { data } = await axios({
+              method: "GET",
+              url: `${baseUrl}/product/${productId}`,
+              // headers: {
+              //     access_token: localStorage.access_token
+              // }
+          })
+          this.router.push('/products/details/' + productId)
+          this.detailProduct = data
+          console.log(this.detailProduct)
+      } catch (error) {
+          console.log(error)
+      }
+    },
+    async deleteProduct(productId) {
+      try {
+        const { data } = await axios({
+          method: "DELETE",
+          url: `${baseUrl}/product/${productId}`,
+        })
+        this.getProducts()
+        // console.log(this.products.dataPost)
+      } catch (error) {
+        console.log(error)
+      }
+    },
   }
 })

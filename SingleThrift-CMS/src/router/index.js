@@ -6,6 +6,8 @@ import UserList from "../views/UserList.vue";
 import HomePage from "../views/HomePage.vue"
 import BannedUser from "../views/BannedUser.vue"
 import NewAdmin from "../views/NewAdmin.vue"
+import ProductDetail from "../views/DetailProduct.vue"
+import CategoryList from "../views/CategoryList.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,6 +33,11 @@ const router = createRouter({
           component: ProductList
         },
         {
+          path: '/products/details/:id',
+          name: 'productDetails',
+          component: ProductDetail
+        },
+        {
           path: '/users',
           name: 'userList',
           component: UserList
@@ -45,21 +52,27 @@ const router = createRouter({
           name: 'newAdmin',
           component: NewAdmin
         },
+        {
+          path: '/categories',
+          name: 'categories',
+          component: CategoryList
+        },
       ]
     },
 
   ]
 })
 
-// router.beforeEach((to, from, next) => {
-//   const isLogin = !!localStorage.getItem('access_token')
-//   if (!isLogin && to.path === '/favorite') {
-//     next('/auth')
-//   } else if(isLogin && (to.path === '/login'||to.path === '/register')) {
-//     next('/')
-//   } else {
-//     next()
-//   }
-// })
+router.beforeEach((to, from, next) => {
+  const isLogin = !!localStorage.getItem('access_token')
+  
+  if (!isLogin && (to.path !== '/login')) {
+    next('/login')
+  } else if(isLogin && to.path === '/login') {
+    next('/')
+  } else {
+    next()
+  }
+})
 export default router
 

@@ -1,6 +1,21 @@
 <script>
+import { mapActions } from 'pinia'
+import { useAppStore } from '../stores/counter'
 export default {
-    
+    data(){
+      return{
+        form:{
+          email:'',
+          password:''
+        }
+      }
+    },
+    methods:{
+      ...mapActions(useAppStore,['doLogin']),
+      login(){
+        this.doLogin(this.form)
+      }
+    }
 }
 </script>
 
@@ -20,7 +35,7 @@ export default {
     </p>
 
     <form
-      action=""
+      @submit.prevent="login"
       class="mt-6 mb-0 space-y-4 rounded-lg p-4 sm:p-6 lg:p-8"
     >
       <p class="text-center text-lg font-medium">Sign in</p>
@@ -31,6 +46,7 @@ export default {
         <div class="relative">
           <input
             type="email"
+            v-model="form.email"
             class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
             placeholder="Enter email"
           />
@@ -44,6 +60,7 @@ export default {
         <div class="relative">
           <input
             type="password"
+            v-model="form.password"
             class="w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm"
             placeholder="Enter password"
           />

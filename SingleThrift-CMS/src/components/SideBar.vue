@@ -1,5 +1,27 @@
 <script>
-export default {};
+import { mapActions, mapState } from 'pinia';
+import { useAppStore } from '../stores/counter';
+export default {
+  data(){
+    return{
+      emailUser:''
+    }
+  },
+  methods:{
+    ...mapActions(useAppStore,['doLogout']),
+    logout(){
+      this.doLogout()
+    }
+  },
+  computed:{
+    ...mapState(useAppStore,['email'])
+  },
+  watch:{
+    email(newEmail){
+      this.emailUser = newEmail
+    }
+  }
+};
 </script>
 
 
@@ -175,25 +197,78 @@ export default {};
               <span class="text-sm font-medium"> Products List </span>
             </a>
           </router-link>
+           <router-link to="/categories">
+            <a
+              class="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-900 hover:bg-pink-400 hover:text-gray-900"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 opacity-75"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+                />
+              </svg>
+
+              <span class="text-sm font-medium"> Category List </span>
+            </a>
+          </router-link>
+
+          <form @submit.prevent="logout">
+            <button
+              type="submit"
+            class="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-900 hover:bg-pink-400 hover:text-gray-900" >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 opacity-75"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                />
+              </svg>
+
+              <span class="text-sm font-medium"> Logout </span>
+            </button>
+          </form>
+
         </nav>
       </div>
+      
 
       <div class="sticky inset-x-0 bottom-0 border-t border-gray-900">
         <a
-          href="#"
-          class="flex items-center gap-2 bg-gray-100 p-4 hover:bg-gray-50"
+          class="flex items-center gap-2 bg-gray-100 p-4"
         >
-          <img
-            alt="Man"
-            src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
-            class="h-10 w-10 rounded-full object-cover"
-          />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 opacity-75"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+              />
+            </svg>
 
           <div>
             <p class="text-xs">
-              <strong class="block font-medium">Eric Frusciante</strong>
-
-              <span> eric@frusciante.com </span>
+              <strong class="block font-medium">{{email}}</strong>
             </p>
           </div>
         </a>
