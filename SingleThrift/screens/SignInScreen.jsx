@@ -13,9 +13,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
 import { useDispatch } from 'react-redux';
 import { setLogin } from '../actions/actionCreator';
+// import ToastManager, { Toast } from 'toastify-react-native';
 
 export default function SignInScreen({ navigation }) {
   const dispatch = useDispatch();
+  // const showToasts = () => {
+  //   Toast.error('Promised is resolved');
+  // };
 
   const [inputValues, setInputValues] = useState({
     email: '',
@@ -46,11 +50,13 @@ export default function SignInScreen({ navigation }) {
       if (accessToken !== null) {
         if (data.role === 'buyer') {
           navigation.navigate('HomeTabScreen');
-        } else {
+        } else if (data.role === 'seller') {
           navigation.navigate('DashboardTabScreen');
+        } else {
+          alert('Wrong username & Password');
         }
       } else {
-        console.log('Wrong username & Password');
+        alert('Wrong username & Password');
       }
     } catch (error) {
       console.log(error);

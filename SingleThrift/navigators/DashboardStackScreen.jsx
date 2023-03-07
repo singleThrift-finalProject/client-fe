@@ -1,9 +1,15 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Text, Image, View } from 'react-native';
+import { Text, TouchableOpacity, Image, View } from 'react-native';
 import DashboardScreen from '../screens/DashboardScreen';
 
-export default function DashboardStackScreen() {
+export default function DashboardStackScreen({ navigation }) {
   const Stack = createNativeStackNavigator();
+  const handleLogout = async () => {
+    await AsyncStorage.removeItem('access_token');
+    alert('Success logged out');
+    navigation.navigate('LandingScreen');
+  };
 
   return (
     <Stack.Navigator>
@@ -12,10 +18,12 @@ export default function DashboardStackScreen() {
         component={DashboardScreen}
         options={({ navigation }) => ({
           headerLeft: () => (
-            <Image
-              source={require('../assets/icons/category-bar.png')}
-              className="h-[12] w-[18] ml-[30]"
-            />
+            <TouchableOpacity onPress={() => handleLogout()}>
+              <Image
+                source={require('../assets/icons/category-bar.png')}
+                className="h-[12] w-[18] ml-[30]"
+              />
+            </TouchableOpacity>
           ),
           headerTitle: () => (
             <Text

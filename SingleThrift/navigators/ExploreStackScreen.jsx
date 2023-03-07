@@ -6,9 +6,9 @@ import HomeScreen from '../screens/HomeScreen';
 export default function ExploreStackScreen({ navigation }) {
   const Stack = createNativeStackNavigator();
   const handleLogout = async () => {
-    console.log('masuk handle logout <><!');
     await AsyncStorage.removeItem('access_token');
-    // navigation.navigate('LandingScreen');
+    alert('Success logged out');
+    navigation.navigate('LandingScreen');
   };
 
   return (
