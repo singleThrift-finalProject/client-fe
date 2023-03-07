@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Text, TouchableOpacity, Image, View } from 'react-native';
 import HomeScreen from '../screens/HomeScreen';
@@ -5,7 +6,9 @@ import HomeScreen from '../screens/HomeScreen';
 export default function ExploreStackScreen({ navigation }) {
   const Stack = createNativeStackNavigator();
   const handleLogout = async () => {
-    console.log('handle logout disini');
+    console.log('masuk handle logout <><!');
+    await AsyncStorage.removeItem('access_token');
+    // navigation.navigate('LandingScreen');
   };
 
   return (

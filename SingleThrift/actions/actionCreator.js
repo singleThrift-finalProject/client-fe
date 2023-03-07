@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import {
   LOGIN_SETLOGIN_PENDING,
@@ -31,7 +32,12 @@ export const setLogin = (dataForm) => {
         `${BASE_URL_NGROK}/users/login`,
         dataForm
       );
-      dispatch(setLoginSuccess(data));
+      await AsyncStorage.setItem(
+        'access_token',
+        JSON.stringify(data.access_token)
+      );
+      await AsyncStorage.setItem('data', JSON.stringify(data));
+      dispatch(setLoginSuccess(data.access_token));
     } catch (error) {
       dispatch(setLoginFail(error));
     }

@@ -8,25 +8,13 @@ import {
   ScrollView,
 } from 'react-native';
 import SpecifiedView from '../components/SpecifiedView';
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setLogin } from '../actions/actionCreator';
-import { BASE_URL_NGROK } from '../actions/actionType';
 
 export default function SignInScreen({ navigation }) {
-  // let [fontsLoaded] = useFonts({
-  //   Inter_900Black,
-  // });
-  // if (!fontsLoaded) {
-  //   return null;
-  // }
-
-  const { isLoadingSetToken, token, error } = useSelector(
-    (state) => state.login
-  );
   const dispatch = useDispatch();
 
   const [inputValues, setInputValues] = useState({
@@ -40,50 +28,41 @@ export default function SignInScreen({ navigation }) {
     });
   };
 
-  // const handleSubmit = async () => {
-  //   try {
-  //     await dispatch(setLogin(inputValues));
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
   const handleSubmit = async () => {
     try {
-      // await dispatch(setLogin(inputValues));
-      const { data } = await axios.post(
-        `${BASE_URL_NGROK}/users/login`,
-        inputValues
-      );
-      // console.log(data);
-      await AsyncStorage.setItem('access_token', JSON.stringify(data));
-      const token = JSON.parse(await AsyncStorage.getItem('access_token'));
-      console.log(token.access_token);
+      await dispatch(setLogin(inputValues));
+      tokenLogin();
     } catch (error) {
       console.log(error);
     }
   };
 
-  // const tokenLogin = async () => {
-  //   try {
-  //     const accessToken = await AsyncStorage.getItem('access_token');
-  //     const role = await AsyncStorage.getItem('role');
-  //     if (accessToken !== null) {
-  //       if (JSON.parse(role) === 'buyer') {
-  //         navigation.navigate('HomeTabScreen');
-  //       } else {
-  //         navigation.navigate('DashboardTabScreen');
-  //       }
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const tokenLogin = async () => {
+    try {
+      const accessToken = JSON.parse(
+        await AsyncStorage.getItem('access_token')
+      );
+      const data = JSON.parse(await AsyncStorage.getItem('data'));
+      if (accessToken !== null) {
+        if (data.role === 'buyer') {
+          navigation.navigate('HomeTabScreen');
+        } else {
+          navigation.navigate('DashboardTabScreen');
+        }
+      } else {
+        console.log('Wrong username & Password');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  // useEffect(() => {
-  //   (async () => {
-  //     await tokenLogin();
-  //   })();
-  // }, []);
+  let [fontsLoaded] = useFonts({
+    Inter_900Black,
+  });
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <SpecifiedView className="bg-white h-[100%]">
