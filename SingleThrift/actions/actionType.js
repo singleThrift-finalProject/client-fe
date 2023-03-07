@@ -12,5 +12,8 @@ export const LOGIN_SETLOGIN_PENDING = 'login/setLoginPending';
 export const LOGIN_SETLOGIN_SUCCESS = 'login/setLoginSuccess';
 export const LOGIN_SETLOGIN_FAIL = 'login/setLoginFail';
 
+export const BUYER_FETCHPRODUCT_PENDING = 'buyer/fetchProductPending';
+export const BUYER_FETCHPRODUCT_SUCCESS = 'buyer/fetchProductSuccess';
+export const BUYER_FETCHPRODUCT_FAIL = 'buyer/fetchProductFail';
 
-export const BASE_URL_NGROK = 'https://8588-139-228-111-126.ap.ngrok.io';
+export const BASE_URL_NGROK = 'https://f394-139-228-111-126.ap.ngrok.io';
