@@ -7,16 +7,17 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import SpecifiedView from '../components/SpecifiedView';
-import React, { useState } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
 import { useDispatch } from 'react-redux';
 import { setLogin } from '../actions/actionCreator';
+import React, { useState } from 'react';
+import SpecifiedView from '../components/SpecifiedView';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 // import ToastManager, { Toast } from 'toastify-react-native';
 
 export default function SignInScreen({ navigation }) {
   const dispatch = useDispatch();
+
   // const showToasts = () => {
   //   Toast.error('Promised is resolved');
   // };
