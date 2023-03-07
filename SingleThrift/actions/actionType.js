@@ -12,4 +12,4 @@ export const LOGIN_SETLOGIN_PENDING = 'login/setLoginPending';
 export const LOGIN_SETLOGIN_SUCCESS = 'login/setLoginSuccess';
 export const LOGIN_SETLOGIN_FAIL = 'login/setLoginFail';
 
-export const BASE_URL_NGROK = 'https://74ff-114-10-31-210.ap.ngrok.io';
+export const BASE_URL_NGROK = 'https://c7e4-120-188-35-126.ap.ngrok.io';

@@ -8,12 +8,49 @@ import {
   ScrollView,
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
-import SpecifiedView from '../components/SpecifiedView';
 import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
+import { BASE_URL_NGROK } from '../actions/actionType';
 import React, { useState } from 'react';
+import SpecifiedView from '../components/SpecifiedView';
+import axios from 'axios';
 
 export default function SignUpScreen({ navigation }) {
-  const [selectedLanguage, setSelectedLanguage] = useState();
+  const [selectedRole, setSelectedRole] = useState();
+  const [inputValues, setInputValues] = useState({
+    username: '',
+    email: '',
+    password: '',
+    phoneNumber: '',
+    address: '',
+  });
+
+  const handleInputChange = (fieldName, value) => {
+    setInputValues({
+      ...inputValues,
+      [fieldName]: value,
+    });
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const { data } = await axios.post(`${BASE_URL_NGROK}/users/register`, {
+        ...inputValues,
+        role: selectedRole,
+      });
+      setInputValues({
+        username: '',
+        email: '',
+        password: '',
+        phoneNumber: '',
+        address: '',
+      });
+      navigation.navigate('SignInScreen');
+      alert(`Berhasil menambahkan data user ${data.email}`);
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   let [fontsLoaded] = useFonts({
     Inter_900Black,
   });
@@ -44,36 +81,52 @@ export default function SignUpScreen({ navigation }) {
             <TextInput
               className="py-[15] px-[20] placeholder:font-extrabold placeholder:text-primary shadow-xl shadow-gray-400 border border-inputStroke bg-white rounded-3xl"
               placeholder="Username"
+              onChangeText={(value) => handleInputChange('username', value)}
+              value={inputValues.username}
             />
+            {/* <Text>{inputValues.username}</Text> */}
             <TextInput
               className="py-[15] px-[20] placeholder:font-extrabold placeholder:text-primary shadow-xl shadow-gray-400 border border-inputStroke bg-white rounded-3xl"
               placeholder="Email"
+              onChangeText={(value) => handleInputChange('email', value)}
+              value={inputValues.email}
             />
             <TextInput
               className="py-[15] px-[20] placeholder:font-extrabold placeholder:text-primary shadow-xl shadow-gray-400 border border-inputStroke bg-white rounded-3xl"
               secureTextEntry
               placeholder="Password"
+              onChangeText={(value) => handleInputChange('password', value)}
+              value={inputValues.password}
             />
-            <View className="rounded-3xl overflow-hidden bg-white shadow-xl shadow-gray-400 border border-inputStroke py-[3] pl-[3]">
+            <TextInput
+              className="py-[15] px-[20] placeholder:font-extrabold placeholder:text-primary shadow-xl shadow-gray-400 border border-inputStroke bg-white rounded-3xl"
+              placeholder="Phone Number"
+              onChangeText={(value) => handleInputChange('phoneNumber', value)}
+              value={inputValues.phoneNumber}
+            />
+            <TextInput
+              className="py-[15] px-[20] placeholder:font-extrabold placeholder:text-primary shadow-xl shadow-gray-400 border border-inputStroke bg-white rounded-3xl"
+              placeholder="Adress"
+              onChangeText={(value) => handleInputChange('address', value)}
+              value={inputValues.address}
+            />
+            <View className="rounded-3xl overflow-hidden bg-white shadow-xl shadow-gray-400 border border-inputStroke py-[3] pl-[3] mb-[15]">
               <Picker
-                selectedValue={selectedLanguage}
+                selectedValue={selectedRole}
                 onValueChange={(itemValue, itemIndex) =>
-                  setSelectedLanguage(itemValue)
+                  setSelectedRole(itemValue)
                 }
               >
-                <Picker.Item label="Buyer" value="java" />
-                <Picker.Item label="Seller" value="js" />
+                <Picker.Item label="Buyer" value="buyer" />
+                <Picker.Item label="Seller" value="seller" />
               </Picker>
             </View>
-            <TextInput
-              className="py-[15] px-[20] placeholder:font-extrabold placeholder:text-primary shadow-xl shadow-gray-400 border border-inputStroke bg-white rounded-3xl mb-[15]"
-              placeholder="Adress"
-            />
             <TouchableOpacity
               className="py-[20] rounded-3xl bg-primary shadow-lg shadow-primary"
-              onPress={() => navigation.push('SignInScreen')}
+              onPress={handleSubmit}
             >
               <Text
+                title="Submit"
                 className="text-[14] text-center text-secondaryLight"
                 style={{
                   fontFamily: 'Inter_900Black',
