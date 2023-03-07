@@ -46,10 +46,14 @@ export default function HomeScreen({ navigation }) {
           </View>
         </View>
         <ScrollView>
-          <View className="flex-row justify-between flex-1 flex-wrap p-[30]">
+          <View className="flex-row justify-between flex-1 flex-wrap px-[30]">
             {!isLoading ? (
               productsBuyer?.map((product) => (
-                <ProductBuyerCard product={product} key={product.id} />
+                <ProductBuyerCard
+                  product={product}
+                  key={product.id}
+                  navigation={navigation}
+                />
               ))
             ) : (
               <Text>Loading ...</Text>
