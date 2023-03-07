@@ -142,13 +142,10 @@ export const useAppStore = defineStore('app', {
       }
     },
     async deleteCategory(categoryId) {
-      try {
+      try { 
         const { data } = await axios({
           method: "DELETE",
           url: `${baseUrl}/category/${categoryId}`,
-          // headers: {
-          //   access_token: localStorage.access_token
-          // }
         })
         this.getCategories()
         // console.log(this.products.dataPost)
