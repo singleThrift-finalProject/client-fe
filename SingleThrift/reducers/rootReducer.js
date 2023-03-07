@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import { counterReducer } from './countReducer';
 import { loginReducer } from './loginReducer';
-// import { tokenReducer } from './tokenReducer';
+import { productReducer } from './productReducer';
 
 const rootReducer = combineReducers({
   count: counterReducer,
-  // token: tokenReducer,
   login: loginReducer,
+  product: productReducer,
 });
 
 export default rootReducer;

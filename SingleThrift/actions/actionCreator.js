@@ -5,6 +5,9 @@ import {
   LOGIN_SETLOGIN_SUCCESS,
   LOGIN_SETLOGIN_FAIL,
   BASE_URL_NGROK,
+  BUYER_FETCHPRODUCT_PENDING,
+  BUYER_FETCHPRODUCT_SUCCESS,
+  BUYER_FETCHPRODUCT_FAIL,
 } from './actionType';
 
 export const setLoginPending = () => {
@@ -40,6 +43,46 @@ export const setLogin = (dataForm) => {
       dispatch(setLoginSuccess(data.access_token));
     } catch (error) {
       dispatch(setLoginFail(error));
+    }
+  };
+};
+
+export const fetchProductBuyerPending = () => {
+  return {
+    type: BUYER_FETCHPRODUCT_PENDING,
+  };
+};
+export const fetchProductBuyerSuccess = (data) => {
+  return {
+    type: BUYER_FETCHPRODUCT_SUCCESS,
+    payload: data,
+  };
+};
+export const fetchProductBuyerFail = (error) => {
+  return {
+    type: BUYER_FETCHPRODUCT_FAIL,
+    payload: error,
+  };
+};
+export const fetchProductBuyer = () => {
+  return async (dispatch, getState) => {
+    try {
+      dispatch(fetchProductBuyerPending());
+      const accessToken = JSON.parse(
+        await AsyncStorage.getItem('access_token')
+      );
+      console.log(accessToken);
+      const { data } = await axios({
+        method: 'GET',
+        url: `${BASE_URL_NGROK}/products`,
+        headers: {
+          access_token: accessToken,
+        },
+      });
+      dispatch(fetchProductBuyerSuccess(data));
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchProductBuyerFail(error));
     }
   };
 };
