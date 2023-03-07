@@ -1,8 +1,6 @@
 import { TouchableOpacity, Image, View, Text } from 'react-native';
 
 function ProductBuyerCard({ product }) {
-  console.log();
-
   return (
     <>
       <TouchableOpacity
