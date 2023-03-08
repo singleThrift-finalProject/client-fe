@@ -60,7 +60,7 @@ export default function ProductSellerDetailScreen({ route, navigation }) {
             )}
             scrollEventThrottle={1}
           >
-            {productDetails.Images.map((el, imageIndex) => {
+            {productDetails?.Images?.map((el, imageIndex) => {
               return (
                 <View
                   style={{ width: 300, height: 250 }}
@@ -75,7 +75,7 @@ export default function ProductSellerDetailScreen({ route, navigation }) {
             })}
           </ScrollView>
           <View style={styles.indicatorContainer}>
-            {productDetails.Images.map((el, imageIndex) => {
+            {productDetails?.Images?.map((el, imageIndex) => {
               const width = scrollX.interpolate({
                 inputRange: [
                   windowWidth * (imageIndex - 1),
@@ -98,13 +98,13 @@ export default function ProductSellerDetailScreen({ route, navigation }) {
         </View>
         <View className="py-[30] gap-[15]">
           <Text className="font-extrabold text-lg">
-            {productDetails.name}
+            {productDetails?.name}
           </Text>
           <View className="flex flex-row flex-wrap items-center">
             <Text className="font-extrabold pr-[15] text-secondary text-xl">
-              Rp {productDetails.price}
+              Rp {productDetails?.price}
             </Text>
-            <Text className="text-sm">{productDetails.condition}</Text>
+            <Text className="text-sm">{productDetails?.condition}</Text>
           </View>
           <View className="flex flex-row items-center">
             <Ionicons
@@ -114,7 +114,7 @@ export default function ProductSellerDetailScreen({ route, navigation }) {
                 marginRight: 15,
               }}
             />
-            <Text className="text-sm">{moment(productDetails.createdAt).startOf('hour').fromNow()} by {productDetails.User.username}</Text>
+            <Text className="text-sm">{moment(productDetails?.createdAt).startOf('hour').fromNow()} by {productDetails?.User?.username}</Text>
           </View>
           <View className="flex flex-row items-center">
             <Ionicons
@@ -124,7 +124,7 @@ export default function ProductSellerDetailScreen({ route, navigation }) {
                 marginRight: 15,
               }}
             />
-            <Text className="text-sm">{productDetails.weight} gram</Text>
+            <Text className="text-sm">{productDetails?.weight} gram</Text>
           </View>
           <View className="flex flex-row items-center">
             <Ionicons
@@ -134,7 +134,7 @@ export default function ProductSellerDetailScreen({ route, navigation }) {
                 marginRight: 15,
               }}
             />
-            <Text className="text-sm">{productDetails.Category.name}</Text>
+            <Text className="text-sm">{productDetails?.Category?.name}</Text>
           </View>
 
           <View className="flex flex-row items-start">
@@ -146,7 +146,7 @@ export default function ProductSellerDetailScreen({ route, navigation }) {
               }}
             />
             <Text className="text-sm  mr-[30]">
-              {productDetails.description}
+              {productDetails?.description}
             </Text>
           </View>
           <View className="flex flex-row items-start">
@@ -157,7 +157,7 @@ export default function ProductSellerDetailScreen({ route, navigation }) {
                 marginRight: 15,
               }}
             />
-            <Text className="text-sm  mr-[30] pb-[10]">{productDetails.User.address}</Text>
+            <Text className="text-sm  mr-[30] pb-[10]">{productDetails?.User?.address}</Text>
           </View>
         </View>
         <View className="flex px-[30] gap-[30] mb-[70]">
