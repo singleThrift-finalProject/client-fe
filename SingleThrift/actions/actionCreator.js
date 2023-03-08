@@ -16,6 +16,9 @@ import {
   FETCHPRODUCT_DETAILS_FAIL,
   BUYER_FETCHCART_PENDING,
   BUYER_FETCHCART_SUCCESS,
+  FETCH_CATEGORY_FAIL,
+  FETCH_CATEGORY_SUCCESS,
+  FETCH_CATEGORY_PENDING,
 } from './actionType';
 
 //LOGIN
@@ -123,6 +126,7 @@ export const fetchProductSellerFail = (error) => {
   };
 };
 export const fetchProductSeller = () => {
+  
   return async (dispatch, getState) => {
     try {
       dispatch(fetchProductSellerPending());
@@ -232,3 +236,46 @@ export const fetchProductDetail = (id) => {
     }
   };
 };
+
+//BUYER PRODUCTS
+export const fetchCategoryPending = () => {
+  return {
+    type: FETCH_CATEGORY_PENDING,
+  };
+};
+export const fetchCategorySuccess = (data) => {
+  return {
+    type: FETCH_CATEGORY_SUCCESS,
+    payload: data,
+  };
+};
+export const fetchCategoryFail = (error) => {
+  return {
+    type: FETCH_CATEGORY_FAIL,
+    payload: error,
+  };
+};
+export const fetchCategory = () => {
+    let baseUrl = `${BASE_URL_NGROK}/categories`;
+
+  return async (dispatch, getState) => {
+    try {
+      dispatch(fetchCategoryPending());
+      const accessToken = JSON.parse(
+        await AsyncStorage.getItem('access_token')
+      );
+      const { data } = await axios({
+        method: 'GET',
+        url: baseUrl,
+        headers: {
+          access_token: accessToken,
+        },
+      });
+      dispatch(fetchCategorySuccess(data));
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchCategoryFail(error));
+    }
+  };
+};
+

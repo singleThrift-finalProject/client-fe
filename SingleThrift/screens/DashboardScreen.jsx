@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   TextInput,
   View,
@@ -27,23 +27,13 @@ export default function DashboardScreen({ navigation }) {
   return (
     <>
       <SpecifiedView className="bg-white h-[100%]">
-        <View className="flex flex-row justify-between px-[30] py-[30]">
-          <TextInput
-            className="py-[15] px-[20] placeholder:font-extrabold placeholder:text-primary shadow-xl shadow-gray-400 border border-inputStroke bg-white rounded-3xl w-2/4"
-            placeholder="Search product"
-          />
-          <View className="bg-primary px-[20] flex flex-row items-center rounded-3xl shadow-xl shadow-gray-400">
-            <Image
-              className="p-[10] h-[18] w-[18]"
-              source={require('../assets/icons/search-icon.png')}
-            />
-          </View>
-          {/* <TouchableOpacity onPress={() => navigation.push('AddProductScreen')}> */}
-          {/* </TouchableOpacity> */}
+        <View className="flex flex-row items-center justify-end px-[30] py-[30]">
+      
+          <Text className="text-lg font-extrabold pr-[20]">Add Product</Text>
 
           <TouchableOpacity
             onPress={() => navigation.push('AddProductScreen')}
-            className="bg-secondaryLight px-[20] flex flex-row items-center rounded-3xl shadow-xl shadow-gray-400"
+            className="bg-secondaryLight px-[20] py-[15] flex flex-row items-center rounded-3xl shadow-xl shadow-gray-400"
           >
             <Image
               className="p-[10] h-[24] w-[18]"
