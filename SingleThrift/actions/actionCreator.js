@@ -8,17 +8,14 @@ import {
   BUYER_FETCHPRODUCT_PENDING,
   BUYER_FETCHPRODUCT_SUCCESS,
   BUYER_FETCHPRODUCT_FAIL,
-
   SELLER_FETCHPRODUCT_PENDING,
   SELLER_FETCHPRODUCT_SUCCESS,
   SELLER_FETCHPRODUCT_FAIL,
   FETCHPRODUCT_DETAILS_PENDING,
   FETCHPRODUCT_DETAILS_SUCCESS,
   FETCHPRODUCT_DETAILS_FAIL,
-
   BUYER_FETCHCART_PENDING,
   BUYER_FETCHCART_SUCCESS,
-
 } from './actionType';
 
 //LOGIN
@@ -99,7 +96,6 @@ export const fetchProductBuyer = () => {
   };
 };
 
-
 //SEllER PRODUCTS
 export const fetchProductSellerPending = () => {
   return {
@@ -129,6 +125,18 @@ export const fetchProductSeller = () => {
       const { data } = await axios({
         method: 'GET',
         url: `${BASE_URL_NGROK}/seller`,
+        headers: {
+          access_token: accessToken,
+        },
+      });
+      console.log(data);
+      dispatch(fetchProductSellerSuccess(data));
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchProductSellerFail(error));
+    }
+  };
+};
 
 export const fetchCartPending = () => {
   return {
@@ -164,12 +172,11 @@ export const fetchCartBuyer = () => {
           access_token: accessToken,
         },
       });
-
-      console.log(data)
-      dispatch(fetchProductSellerSuccess(data));
+      // console.log(data);
+      dispatch(fetchCartSuccess(data));
     } catch (error) {
       console.log(error);
-      dispatch(fetchProductSellerFail(error));
+      dispatch(fetchCartFail(error));
     }
   };
 };
@@ -195,9 +202,9 @@ export const fetchProductDetailFail = (error) => {
 export const fetchProductDetail = (id) => {
   return async (dispatch, getState) => {
     try {
-      console.log(`MASUK KE CREATOR`)
+      console.log(`MASUK KE CREATOR`);
       dispatch(fetchProductDetailPending());
-      console.log(id)
+      console.log(id);
       const accessToken = JSON.parse(
         await AsyncStorage.getItem('access_token')
       );
@@ -209,18 +216,11 @@ export const fetchProductDetail = (id) => {
           access_token: accessToken,
         },
       });
-      console.log(data,`,,,,,,,,,,,,,,,,,,,`)
+      console.log(data, `,,,,,,,,,,,,,,,,,,,`);
       dispatch(fetchProductDetailSuccess(data));
     } catch (error) {
       console.log(error);
       dispatch(fetchProductDetailFail(error));
-
-      // console.log(data);
-      dispatch(fetchCartSuccess(data));
-    } catch (error) {
-      console.log(error);
-      dispatch(fetchCartFail(error));
-
     }
   };
 };

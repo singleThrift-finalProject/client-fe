@@ -10,12 +10,9 @@ const rootReducer = combineReducers({
   count: counterReducer,
   login: loginReducer,
   product: productReducer,
-
-  sellerProduct : sellerProductReducer,
-  productDetail : productDetailReducer
-
+  sellerProduct: sellerProductReducer,
+  productDetail: productDetailReducer,
   cart: cartReducer,
-
 });
 
 export default rootReducer;
