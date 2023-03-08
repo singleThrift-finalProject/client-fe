@@ -11,6 +11,10 @@ import {
 } from 'react-native';
 import SpecifiedView from '../components/SpecifiedView';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import axios from 'axios';
+import { BASE_URL_NGROK } from '../actions/actionType';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { fetchCartBuyer } from '../actions/actionCreator';
 import React, { useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductDetail } from '../actions/actionCreator';
@@ -24,6 +28,7 @@ export default function ProductDetailScreen({ route, navigation }) {
   const { isLoading, productDetails, error } = useSelector((state) => {
     return state.productDetail;
   });
+  
   useEffect(() => {
     dispatch(fetchProductDetail(id));
   }, []);
@@ -31,6 +36,29 @@ export default function ProductDetailScreen({ route, navigation }) {
   const scrollX = useRef(new Animated.Value(0)).current;
   const { width: windowWidth } = useWindowDimensions();
   //END
+
+
+  const handleAddToCart = async () => {
+    try {
+      // console.log('masuk handle', itemId);
+      const accessToken = JSON.parse(
+        await AsyncStorage.getItem('access_token')
+      );
+      // console.log(accessToken);
+      const { data } = await axios({
+        method: 'POST',
+        url: `${BASE_URL_NGROK}/cart/${itemId}`,
+        headers: {
+          access_token: accessToken,
+        },
+      });
+      // console.log(data);
+      dispatch(fetchCartBuyer());
+      navigation.navigate('HomeTabScreen');
+    } catch (error) {
+      alert(error);
+    }
+  };
 
   return (
     <SpecifiedView style={styles.centerContainer} className="bg-white h-[100%]">
@@ -170,7 +198,7 @@ export default function ProductDetailScreen({ route, navigation }) {
         <View className="flex px-[30] gap-[30] mb-[70]">
           <TouchableOpacity
             className="py-[20] flex flex-row justify-center items-center rounded-3xl bg-primary shadow-lg shadow-primary"
-            onPress={() => navigation.navigate('Explore')}
+            onPress={(itemId) => handleAddToCart(itemId)}
           >
             <Ionicons
               name="cart-outline"

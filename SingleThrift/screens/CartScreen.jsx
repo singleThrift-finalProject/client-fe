@@ -4,11 +4,18 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCartBuyer } from '../actions/actionCreator';
 import { useEffect } from 'react';
+import CartCard from '../components/CartCard';
+import Loading from '../components/Loading';
 
 export default function CartScreen({ navigation }) {
   const { isLoading, carts, error } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  console.log(carts);
+
+  let totalAmount = 0;
+  carts.map((cart) => {
+    return (totalAmount += +cart.Product.price);
+  });
+  const total = carts.length;
 
   useEffect(() => {
     (async () => {
@@ -19,65 +26,38 @@ export default function CartScreen({ navigation }) {
   return (
     <>
       <SpecifiedView className="bg-white h-[100%]">
-        <ScrollView className="p-[30]">
-          <View className="flex flex-row justify-between items-center">
-            <View className="flex flex-row gap-[20]">
-              <View className="rounded-xl overflow-hidden">
-                <Image
-                  className="h-[70] w-[70]"
-                  source={{
-                    uri: 'https://apollo-singapore.akamaized.net/v1/files/h1it7tqbx7p41-ID/image;s=780x0;q=60',
-                  }}
-                />
-              </View>
-              <View className="flex h-full gap-[5]">
-                <Text className="font-extrabold">
-                  Kemeja GAP Blue Denim ...
-                </Text>
-                <Text className="font-extrabold text-secondary">
-                  Rp 250,000
-                </Text>
-                <Text className="text-xs">airurero_shop</Text>
-              </View>
+        <ScrollView className="py-[40] px-[30] mb-[20]">
+          {!isLoading ? (
+            carts?.map((cart) => <CartCard cart={cart} key={cart.id} />)
+          ) : (
+            <Loading />
+          )}
+        </ScrollView>
+        <View className="py-[30] bg-primary rounded-t-3xl">
+          <Text className="text-lg text-white font-extrabold px-[30]">
+            Detail Transaction
+          </Text>
+          <View className="flex flex-row p-[30] justify-between">
+            <View className="flex">
+              <Text className="text-white pb-[5]">Amount IDR</Text>
+              <Text className="pr-[15] pb-[15] text-4xl font-extrabold text-secondary">
+                {totalAmount}
+              </Text>
             </View>
-            <TouchableOpacity>
-              <Ionicons
-                name="close-outline"
-                size={32}
-                color="#EA4C89"
-                style={{
-                  marginRight: 15,
-                }}
-              />
-            </TouchableOpacity>
-          </View>
-          <View className="py-[30] gap-[15]">
-            <Text className="text-lg font-extrabold">Detail Transaction</Text>
-            <View className="flex flex-row">
-              <View>
-                <Text className="pr-[15] pb-[15]">Total Price</Text>
-                <Text className="pr-[15] pb-[15]">Total Quantity</Text>
-                <Text className="pr-[15] pb-[15]">From</Text>
-              </View>
-              <View>
-                <Text className="pr-[15] pb-[15]">:</Text>
-                <Text className="pr-[15] pb-[15]">:</Text>
-                <Text className="pr-[15] pb-[15]">:</Text>
-              </View>
-              <View>
-                <Text className="pr-[15] pb-[15]">Rp 250,000</Text>
-                <Text className="pr-[15] pb-[15]">1 Pcs</Text>
-                <Text className="pr-[15] pb-[15]">1 Seller</Text>
-              </View>
+            <View className="flex">
+              <Text className="text-white pb-[5]">Quantity</Text>
+              <Text className="text-white pr-[15] pb-[15] text-4xl font-extrabold">
+                {total} Pcs
+              </Text>
             </View>
           </View>
-          <View className="flex px-[30] gap-[30] mb-[70]">
+          <View className="flex px-[30] gap-[30] pb-[20]">
             <TouchableOpacity
-              className="py-[20] flex flex-row justify-center items-center rounded-3xl bg-secondaryLight shadow-lg shadow-secondary"
+              className="py-[20] flex flex-row justify-center items-center rounded-3xl bg-white shadow-lg shadow-primary"
               onPress={() => navigation.push('PaymentSuccessScreen')}
             >
               <Text
-                className="text-[14] text-center text-secondary pr-[15]"
+                className="text-[14] text-center text-primary pr-[15]"
                 style={{
                   fontFamily: 'Inter_900Black',
                 }}
@@ -90,11 +70,11 @@ export default function CartScreen({ navigation }) {
                 style={{
                   marginRight: 15,
                 }}
-                color="#EA4C89"
+                color="#2A2526"
               />
             </TouchableOpacity>
           </View>
-        </ScrollView>
+        </View>
       </SpecifiedView>
     </>
   );
