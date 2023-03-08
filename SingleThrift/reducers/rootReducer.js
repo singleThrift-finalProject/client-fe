@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { cartReducer } from './cartReducer';
+import { cityReducer } from './cityReducer';
 import { categoryReducer } from './categoryReducer';
 import { counterReducer } from './countReducer';
 import { loginReducer } from './loginReducer';
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   sellerProduct: sellerProductReducer,
   productDetail: productDetailReducer,
   cart: cartReducer,
+  city: cityReducer,
   category : categoryReducer
 });
 

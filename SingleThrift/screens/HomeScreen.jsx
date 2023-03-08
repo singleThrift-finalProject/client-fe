@@ -13,8 +13,8 @@ export default function HomeScreen({ navigation }) {
   });
 
   const [search, setSearch] = useState();
-  console.log(search);
-
+  // console.log(search);
+  // console.log(state.prpduct);
   useEffect(() => {
     (async () => {
       dispatch(fetchProductBuyer(search));

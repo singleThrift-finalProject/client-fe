@@ -32,4 +32,9 @@ export const BUYER_FETCHCART_PENDING = 'buyer/fetchCartPending';
 export const BUYER_FETCHCART_SUCCESS = 'buyer/fetchCartSuccess';
 export const BUYER_FETCHCART_FAIL = 'buyer/fetchCartFail';
 
-export const BASE_URL_NGROK = 'https://2cf5-182-3-47-5.ap.ngrok.io';
+
+export const PAYMENT_GETCITY_PENDING = 'payment/getCityPending';
+export const PAYMENT_GETCITY_SUCCESS = 'payment/getCitySuccess';
+export const PAYMENT_GETCITY_FAIL = 'payment/getCityFail';
+
+export const BASE_URL_NGROK = 'https://a74a-139-228-111-126.ap.ngrok.io';

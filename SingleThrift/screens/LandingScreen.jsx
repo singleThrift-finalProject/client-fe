@@ -19,9 +19,8 @@ export default function LandingScreen({ navigation }) {
   }
 
   return (
-    <SpecifiedView className="bg-white h-full">
+    <SpecifiedView className="bg-white h-[100%]">
       <ScrollView>
-
         <ImageBackground
           className="h-[400]"
           source={require('../assets/images/landing-screen-bg.png')}
@@ -40,7 +39,7 @@ export default function LandingScreen({ navigation }) {
           fun
         </Text>
 
-        <View className="flex px-[30] gap-[30]">
+        <View className="flex px-[30] gap-[30] pb-[30]">
           <TouchableOpacity
             className="py-[20] rounded-3xl bg-primary shadow-lg shadow-primary"
             onPress={() => navigation.push('SignUpScreen')}
