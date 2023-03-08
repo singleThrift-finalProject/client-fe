@@ -20,4 +20,4 @@ export const BUYER_FETCHCART_PENDING = 'buyer/fetchCartPending';
 export const BUYER_FETCHCART_SUCCESS = 'buyer/fetchCartSuccess';
 export const BUYER_FETCHCART_FAIL = 'buyer/fetchCartFail';
 
-export const BASE_URL_NGROK = 'https://a376-120-188-66-26.ap.ngrok.io';
+export const BASE_URL_NGROK = 'https://1de6-139-228-111-126.ap.ngrok.io';

@@ -2,15 +2,42 @@ import { Image, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import SpecifiedView from '../components/SpecifiedView';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useEffect } from 'react';
+import axios from 'axios';
 import { useDispatch } from 'react-redux';
+import { BASE_URL_NGROK } from '../actions/actionType';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { fetchCartBuyer } from '../actions/actionCreator';
 
 export default function ProductDetailScreen({ route, navigation }) {
   const { itemId } = route.params;
   const dispatch = useDispatch();
+  // console.log(itemId);
 
   // useEffect(() => {
   //   (async () => {})();
   // }, []);
+
+  const handleAddToCart = async () => {
+    try {
+      // console.log('masuk handle', itemId);
+      const accessToken = JSON.parse(
+        await AsyncStorage.getItem('access_token')
+      );
+      // console.log(accessToken);
+      const { data } = await axios({
+        method: 'POST',
+        url: `${BASE_URL_NGROK}/cart/${itemId}`,
+        headers: {
+          access_token: accessToken,
+        },
+      });
+      // console.log(data);
+      dispatch(fetchCartBuyer());
+      navigation.navigate('HomeTabScreen');
+    } catch (error) {
+      alert(error);
+    }
+  };
 
   return (
     <SpecifiedView className="bg-white h-[100%]">
@@ -104,7 +131,7 @@ export default function ProductDetailScreen({ route, navigation }) {
         <View className="flex px-[30] gap-[30] mb-[70]">
           <TouchableOpacity
             className="py-[20] flex flex-row justify-center items-center rounded-3xl bg-primary shadow-lg shadow-primary"
-            onPress={() => navigation.navigate('Explore')}
+            onPress={(itemId) => handleAddToCart(itemId)}
           >
             <Ionicons
               name="cart-outline"

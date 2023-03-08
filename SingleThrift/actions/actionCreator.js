@@ -66,7 +66,15 @@ export const fetchProductBuyerFail = (error) => {
     payload: error,
   };
 };
-export const fetchProductBuyer = () => {
+export const fetchProductBuyer = (search) => {
+  let baseUrl;
+  if (search) {
+    baseUrl = `${BASE_URL_NGROK}/products?search=${search}`;
+    console.log('engga kosong:', baseUrl);
+  } else {
+    baseUrl = `${BASE_URL_NGROK}/products`;
+  }
+
   return async (dispatch, getState) => {
     try {
       dispatch(fetchProductBuyerPending());
@@ -75,7 +83,7 @@ export const fetchProductBuyer = () => {
       );
       const { data } = await axios({
         method: 'GET',
-        url: `${BASE_URL_NGROK}/products`,
+        url: baseUrl,
         headers: {
           access_token: accessToken,
         },
