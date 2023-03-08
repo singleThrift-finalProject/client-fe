@@ -1,8 +1,21 @@
 import { ScrollView, Text, View, Image, TouchableOpacity } from 'react-native';
 import SpecifiedView from '../components/SpecifiedView';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCartBuyer } from '../actions/actionCreator';
+import { useEffect } from 'react';
 
 export default function CartScreen({ navigation }) {
+  const { isLoading, carts, error } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  console.log(carts);
+
+  useEffect(() => {
+    (async () => {
+      await dispatch(fetchCartBuyer());
+    })();
+  }, []);
+
   return (
     <>
       <SpecifiedView className="bg-white h-[100%]">

@@ -1,8 +1,17 @@
 import { Image, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import SpecifiedView from '../components/SpecifiedView';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
-export default function ProductDetailScreen({ navigation }) {
+export default function ProductDetailScreen({ route, navigation }) {
+  const { itemId } = route.params;
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   (async () => {})();
+  // }, []);
+
   return (
     <SpecifiedView className="bg-white h-[100%]">
       <ScrollView className="p-[30]">

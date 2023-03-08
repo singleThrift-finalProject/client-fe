@@ -2,7 +2,10 @@ import { Image, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import SpecifiedView from '../components/SpecifiedView';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-export default function ProductSellerDetailScreen({ navigation }) {
+export default function ProductSellerDetailScreen({ route, navigation }) {
+  const { itemId } = route.params;
+  console.log(itemId);
+
   return (
     <SpecifiedView className="bg-white h-[100%]">
       <ScrollView className="p-[30]">
