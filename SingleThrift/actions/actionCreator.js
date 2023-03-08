@@ -16,6 +16,9 @@ import {
   FETCHPRODUCT_DETAILS_FAIL,
   BUYER_FETCHCART_PENDING,
   BUYER_FETCHCART_SUCCESS,
+  PAYMENT_GETCITY_FAIL,
+  PAYMENT_GETCITY_PENDING,
+  PAYMENT_GETCITY_SUCCESS,
 } from './actionType';
 
 //LOGIN
@@ -229,6 +232,49 @@ export const fetchProductDetail = (id) => {
     } catch (error) {
       console.log(error);
       dispatch(fetchProductDetailFail(error));
+    }
+  };
+};
+
+// Bagas
+export const getCityPending = () => {
+  return {
+    type: PAYMENT_GETCITY_FAIL,
+  };
+};
+export const getCitySuccess = (data) => {
+  return {
+    type: PAYMENT_GETCITY_SUCCESS,
+    payload: data,
+  };
+};
+export const getCityFail = (error) => {
+  return {
+    type: PAYMENT_GETCITY_PENDING,
+    payload: error,
+  };
+};
+export const getCity = () => {
+  return async (dispatch, getState) => {
+    try {
+      dispatch(getCityPending());
+      const accessToken = JSON.parse(
+        await AsyncStorage.getItem('access_token')
+      );
+      // console.log(accessToken);
+      const { data } = await axios({
+        method: 'GET',
+        url: `${BASE_URL_NGROK}/payment/cityId`,
+        // url: 'https://06ca-139-228-111-126.ap.ngrok.io/payment/cityId',
+        headers: {
+          access_token: accessToken,
+        },
+      });
+      // console.log(data);
+      dispatch(getCitySuccess(data));
+    } catch (error) {
+      console.log(error);
+      dispatch(getCityFail(error));
     }
   };
 };
