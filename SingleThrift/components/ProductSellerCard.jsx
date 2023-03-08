@@ -1,3 +1,4 @@
+import { FormatRupiah } from '@arismun/format-rupiah';
 import { TouchableOpacity, Image, View, Text } from 'react-native';
 
 function ProductSellerCard({ product,navigation }) {
@@ -23,7 +24,7 @@ function ProductSellerCard({ product,navigation }) {
                     </Text>
                     <View className="flex flex-row flex-wrap items-center">
                         <Text className="font-extrabold pr-[10] text-secondary text-[16px]">
-                            Rp {product.price}
+                        <FormatRupiah value={product?.price}/>
                         </Text>
                         <Text className="text-xs text-[10px]">{product.condition}</Text>
                     </View>

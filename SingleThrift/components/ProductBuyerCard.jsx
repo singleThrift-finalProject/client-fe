@@ -1,17 +1,13 @@
 import { TouchableOpacity, Image, View, Text } from 'react-native';
-
+import { FormatRupiah } from "@arismun/format-rupiah";
 
 function ProductBuyerCard({ product, navigation }) {
-  // function handleDetailProduct(id) {
-  //   console.log(id);
-  // }
-
   return (
     <>
       <TouchableOpacity
         onPress={() =>
           navigation.navigate('ProductDetailScreen', {
-            itemId: product?.id,
+            id: product?.id,
           })
         }
         className="flex w-[44%] overflow-hidden mr-[10] mb-[30]"
@@ -26,7 +22,7 @@ function ProductBuyerCard({ product, navigation }) {
           <Text className="font-extrabold text-[14px]">{product?.name}</Text>
           <View className="flex flex-row flex-wrap items-center">
             <Text className="font-extrabold pr-[10] text-secondary text-[16px]">
-              Rp {product?.price}
+              <FormatRupiah value={product?.price}/>
             </Text>
             <Text className="text-xs text-[10px]">{product?.condition}</Text>
           </View>
