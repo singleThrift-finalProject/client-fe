@@ -8,28 +8,28 @@
 // export const TOKEN_DELTOKEN_SUCCESS = 'token/delTokenSuccess';
 // export const TOKEN_DELTOKEN_FAIL = 'token/delTokenFail';
 
-export const LOGIN_SETLOGIN_PENDING = 'login/setLoginPending';
-export const LOGIN_SETLOGIN_SUCCESS = 'login/setLoginSuccess';
-export const LOGIN_SETLOGIN_FAIL = 'login/setLoginFail';
+export const LOGIN_SETLOGIN_PENDING = "login/setLoginPending";
+export const LOGIN_SETLOGIN_SUCCESS = "login/setLoginSuccess";
+export const LOGIN_SETLOGIN_FAIL = "login/setLoginFail";
 
-export const BUYER_FETCHPRODUCT_PENDING = 'buyer/fetchProductPending';
-export const BUYER_FETCHPRODUCT_SUCCESS = 'buyer/fetchProductSuccess';
-export const BUYER_FETCHPRODUCT_FAIL = 'buyer/fetchProductFail';
+export const BUYER_FETCHPRODUCT_PENDING = "buyer/fetchProductPending";
+export const BUYER_FETCHPRODUCT_SUCCESS = "buyer/fetchProductSuccess";
+export const BUYER_FETCHPRODUCT_FAIL = "buyer/fetchProductFail";
 
-export const SELLER_FETCHPRODUCT_PENDING = 'seller/fetchProductPending';
-export const SELLER_FETCHPRODUCT_SUCCESS = 'seller/fetchProductSuccess';
-export const SELLER_FETCHPRODUCT_FAIL = 'seller/fetchProductFail';
+export const SELLER_FETCHPRODUCT_PENDING = "seller/fetchProductPending";
+export const SELLER_FETCHPRODUCT_SUCCESS = "seller/fetchProductSuccess";
+export const SELLER_FETCHPRODUCT_FAIL = "seller/fetchProductFail";
 
-export const FETCHPRODUCT_DETAILS_PENDING = 'details/fetchProductDetailPending';
-export const FETCHPRODUCT_DETAILS_SUCCESS = 'details/fetchProductDetailSuccess';
-export const FETCHPRODUCT_DETAILS_FAIL = 'details/fetchProductDetailFail';
+export const FETCHPRODUCT_DETAILS_PENDING = "details/fetchProductDetailPending";
+export const FETCHPRODUCT_DETAILS_SUCCESS = "details/fetchProductDetailSuccess";
+export const FETCHPRODUCT_DETAILS_FAIL = "details/fetchProductDetailFail";
 
-export const FETCH_CATEGORY_PENDING = 'category/fetchCategoryPending';
-export const FETCH_CATEGORY_SUCCESS = 'category/fetchCategorySuccess';
-export const FETCH_CATEGORY_FAIL = 'category/fetchCategoryFail';
+export const FETCH_CATEGORY_PENDING = "category/fetchCategoryPending";
+export const FETCH_CATEGORY_SUCCESS = "category/fetchCategorySuccess";
+export const FETCH_CATEGORY_FAIL = "category/fetchCategoryFail";
 
-export const BUYER_FETCHCART_PENDING = 'buyer/fetchCartPending';
-export const BUYER_FETCHCART_SUCCESS = 'buyer/fetchCartSuccess';
-export const BUYER_FETCHCART_FAIL = 'buyer/fetchCartFail';
-
-export const BASE_URL_NGROK = 'https://2cf5-182-3-47-5.ap.ngrok.io';
+export const BUYER_FETCHCART_PENDING = "buyer/fetchCartPending";
+export const BUYER_FETCHCART_SUCCESS = "buyer/fetchCartSuccess";
+export const BUYER_FETCHCART_FAIL = "buyer/fetchCartFail";
+// base url jeane
+export const BASE_URL_NGROK = "https://6f02-182-2-132-86.ap.ngrok.io";
