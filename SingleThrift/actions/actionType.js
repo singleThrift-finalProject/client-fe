@@ -24,9 +24,14 @@ export const FETCHPRODUCT_DETAILS_PENDING = 'details/fetchProductDetailPending';
 export const FETCHPRODUCT_DETAILS_SUCCESS = 'details/fetchProductDetailSuccess';
 export const FETCHPRODUCT_DETAILS_FAIL = 'details/fetchProductDetailFail';
 
+export const FETCH_CATEGORY_PENDING = 'category/fetchCategoryPending';
+export const FETCH_CATEGORY_SUCCESS = 'category/fetchCategorySuccess';
+export const FETCH_CATEGORY_FAIL = 'category/fetchCategoryFail';
+
 export const BUYER_FETCHCART_PENDING = 'buyer/fetchCartPending';
 export const BUYER_FETCHCART_SUCCESS = 'buyer/fetchCartSuccess';
 export const BUYER_FETCHCART_FAIL = 'buyer/fetchCartFail';
+
 
 export const PAYMENT_GETCITY_PENDING = 'payment/getCityPending';
 export const PAYMENT_GETCITY_SUCCESS = 'payment/getCitySuccess';

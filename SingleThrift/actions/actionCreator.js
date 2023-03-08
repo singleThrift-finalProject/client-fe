@@ -19,6 +19,9 @@ import {
   PAYMENT_GETCITY_FAIL,
   PAYMENT_GETCITY_PENDING,
   PAYMENT_GETCITY_SUCCESS,
+  FETCH_CATEGORY_FAIL,
+  FETCH_CATEGORY_SUCCESS,
+  FETCH_CATEGORY_PENDING
 } from './actionType';
 
 //LOGIN
@@ -126,6 +129,7 @@ export const fetchProductSellerFail = (error) => {
   };
 };
 export const fetchProductSeller = () => {
+  
   return async (dispatch, getState) => {
     try {
       dispatch(fetchProductSellerPending());
@@ -236,6 +240,7 @@ export const fetchProductDetail = (id) => {
   };
 };
 
+
 // Bagas
 export const getCityPending = () => {
   return {
@@ -266,10 +271,43 @@ export const getCity = () => {
         method: 'GET',
         url: `${BASE_URL_NGROK}/payment/cityId`,
         // url: 'https://06ca-139-228-111-126.ap.ngrok.io/payment/cityId',
+
+//BUYER PRODUCTS
+export const fetchCategoryPending = () => {
+  return {
+    type: FETCH_CATEGORY_PENDING,
+  };
+};
+export const fetchCategorySuccess = (data) => {
+  return {
+    type: FETCH_CATEGORY_SUCCESS,
+    payload: data,
+  };
+};
+export const fetchCategoryFail = (error) => {
+  return {
+    type: FETCH_CATEGORY_FAIL,
+    payload: error,
+  };
+};
+export const fetchCategory = () => {
+    let baseUrl = `${BASE_URL_NGROK}/categories`;
+
+  return async (dispatch, getState) => {
+    try {
+      dispatch(fetchCategoryPending());
+      const accessToken = JSON.parse(
+        await AsyncStorage.getItem('access_token')
+      );
+      const { data } = await axios({
+        method: 'GET',
+        url: baseUrl,
+
         headers: {
           access_token: accessToken,
         },
       });
+
       // console.log(data);
       dispatch(getCitySuccess(data));
     } catch (error) {
@@ -278,3 +316,12 @@ export const getCity = () => {
     }
   };
 };
+
+      dispatch(fetchCategorySuccess(data));
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchCategoryFail(error));
+    }
+  };
+};
+

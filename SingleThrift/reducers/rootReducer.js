@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { cartReducer } from './cartReducer';
 import { cityReducer } from './cityReducer';
+import { categoryReducer } from './categoryReducer';
 import { counterReducer } from './countReducer';
 import { loginReducer } from './loginReducer';
 import { productDetailReducer } from './productDetailReducer';
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   productDetail: productDetailReducer,
   cart: cartReducer,
   city: cityReducer,
+  category : categoryReducer
 });
 
 export default rootReducer;

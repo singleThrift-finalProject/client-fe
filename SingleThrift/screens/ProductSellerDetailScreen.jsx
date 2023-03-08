@@ -16,6 +16,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import moment from 'moment/moment';
+import { FormatRupiah } from "@arismun/format-rupiah";
 
 export default function ProductSellerDetailScreen({ route, navigation }) {
 
@@ -28,9 +29,7 @@ export default function ProductSellerDetailScreen({ route, navigation }) {
 
   console.log(productDetails, `ini di sreen`)
   useEffect(() => {
-    console.log("masuk product seler")
     dispatch(fetchProductDetail(id));
-    console.log(productDetails)
   }, []);
   //PART OF CAROUSEL
   const scrollX = useRef(new Animated.Value(0)).current;
@@ -102,7 +101,7 @@ export default function ProductSellerDetailScreen({ route, navigation }) {
           </Text>
           <View className="flex flex-row flex-wrap items-center">
             <Text className="font-extrabold pr-[15] text-secondary text-xl">
-              Rp {productDetails?.price}
+              <FormatRupiah value={productDetails?.price}/>
             </Text>
             <Text className="text-sm">{productDetails?.condition}</Text>
           </View>
