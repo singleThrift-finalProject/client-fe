@@ -1,35 +1,35 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Text, TouchableOpacity, Image } from 'react-native';
-import LandingScreen from './screens/LandingScreen';
-import SignInScreen from './screens/SignInScreen';
-import SignUpScreen from './screens/SignUpScreen';
-import ProductDetailScreen from './screens/ProductDetailScreen';
-import CartScreen from './screens/CartScreen';
-import HomeTabScreen from './navigators/HomeTabScreen';
-import PaymentSuccessScreen from './screens/PaymentSuccess';
-import DashboardTabScreen from './navigators/DashboardTabScreen';
-import ProductSellerDetailScreen from './screens/ProductSellerDetailScreen';
-import EditProductScreen from './screens/EditProductScreen';
-import AddProductScreen from './screens/AddProductScreen';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Text, TouchableOpacity, Image } from "react-native";
+import LandingScreen from "./screens/LandingScreen";
+import SignInScreen from "./screens/SignInScreen";
+import SignUpScreen from "./screens/SignUpScreen";
+import ProductDetailScreen from "./screens/ProductDetailScreen";
+import CartScreen from "./screens/CartScreen";
+import HomeTabScreen from "./navigators/HomeTabScreen";
+import PaymentSuccessScreen from "./screens/PaymentSuccess";
+import DashboardTabScreen from "./navigators/DashboardTabScreen";
+import ProductSellerDetailScreen from "./screens/ProductSellerDetailScreen";
+import EditProductScreen from "./screens/EditProductScreen";
+import AddProductScreen from "./screens/AddProductScreen";
 
 function Appholder() {
   const Stack = createNativeStackNavigator();
   const optionHeader = {
     headerTransparent: true,
-    headerTitle: '',
-    headerTintColor: 'white',
+    headerTitle: "",
+    headerTintColor: "white",
   };
   const optionHeaderSignIn = ({ navigation }) => ({
     ...optionHeader,
     headerLeft: () => (
       <TouchableOpacity
         className="pl-[20] flex-row gap-[10]"
-        onPress={() => navigation.push('LandingScreen')}
+        onPress={() => navigation.push("LandingScreen")}
       >
         <Image
           className="w-[9] h-[16.5]"
-          source={require('./assets/icons/chevron-back-white.png')}
+          source={require("./assets/icons/chevron-back-white.png")}
         />
         <Text className="text-secondaryLight text-[16px] font-extrabold">
           Home
@@ -39,7 +39,7 @@ function Appholder() {
     headerRight: () => (
       <TouchableOpacity
         className="pl-[20] flex-row gap-[10]"
-        onPress={() => navigation.push('SignUpScreen')}
+        onPress={() => navigation.push("SignUpScreen")}
       >
         <Text className="pr-[20] text-secondaryLight text-[16px] font-extrabold">
           Sign Up
@@ -52,11 +52,11 @@ function Appholder() {
     headerLeft: () => (
       <TouchableOpacity
         className="pl-[20] flex-row gap-[10]"
-        onPress={() => navigation.push('LandingScreen')}
+        onPress={() => navigation.push("LandingScreen")}
       >
         <Image
           className="w-[9] h-[16.5]"
-          source={require('./assets/icons/chevron-back-white.png')}
+          source={require("./assets/icons/chevron-back-white.png")}
         />
         <Text className="text-secondaryLight text-[16px] font-extrabold">
           Home
@@ -66,7 +66,7 @@ function Appholder() {
     headerRight: () => (
       <TouchableOpacity
         className="pl-[20] flex-row gap-[10]"
-        onPress={() => navigation.push('SignInScreen')}
+        onPress={() => navigation.push("SignInScreen")}
       >
         <Text className="pr-[20] text-secondaryLight text-[16px] font-extrabold">
           Sign In
@@ -108,20 +108,20 @@ function Appholder() {
             component={ProductDetailScreen}
             options={({ navigation }) => ({
               headerLeft: () => (
-                <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+                <TouchableOpacity onPress={() => navigation.navigate("Home")}>
                   <Image
-                    source={require('./assets/icons/chevron-back-pink.png')}
+                    source={require("./assets/icons/chevron-back-pink.png")}
                     className="h-[17] w-[10] ml-[30]"
                   />
                 </TouchableOpacity>
               ),
-              headerTitle: '',
-              headerTitleAlign: 'center',
+              headerTitle: "",
+              headerTitleAlign: "center",
               headerRight: () => (
                 <Text
                   className="pr-[30]"
                   style={{
-                    fontFamily: 'Inter_900Black',
+                    fontFamily: "Inter_900Black",
                   }}
                 >
                   Detail Product
@@ -134,20 +134,20 @@ function Appholder() {
             component={CartScreen}
             options={({ navigation }) => ({
               headerLeft: () => (
-                <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+                <TouchableOpacity onPress={() => navigation.navigate("Home")}>
                   <Image
-                    source={require('./assets/icons/chevron-back-pink.png')}
+                    source={require("./assets/icons/chevron-back-pink.png")}
                     className="h-[17] w-[10] ml-[30]"
                   />
                 </TouchableOpacity>
               ),
-              headerTitle: '',
-              headerTitleAlign: 'center',
+              headerTitle: "",
+              headerTitleAlign: "center",
               headerRight: () => (
                 <Text
                   className="pr-[30]"
                   style={{
-                    fontFamily: 'Inter_900Black',
+                    fontFamily: "Inter_900Black",
                   }}
                 >
                   Cart List
@@ -175,21 +175,21 @@ function Appholder() {
             options={({ navigation }) => ({
               headerLeft: () => (
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('DashboardTabScreen')}
+                  onPress={() => navigation.navigate("DashboardTabScreen")}
                 >
                   <Image
-                    source={require('./assets/icons/chevron-back-pink.png')}
+                    source={require("./assets/icons/chevron-back-pink.png")}
                     className="h-[17] w-[10] ml-[30]"
                   />
                 </TouchableOpacity>
               ),
-              headerTitle: '',
-              headerTitleAlign: 'center',
+              headerTitle: "",
+              headerTitleAlign: "center",
               headerRight: () => (
                 <Text
                   className="pr-[30]"
                   style={{
-                    fontFamily: 'Inter_900Black',
+                    fontFamily: "Inter_900Black",
                   }}
                 >
                   Detail Product
@@ -203,21 +203,21 @@ function Appholder() {
             options={({ navigation }) => ({
               headerLeft: () => (
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('DashboardTabScreen')}
+                  onPress={() => navigation.navigate("DashboardTabScreen")}
                 >
                   <Image
-                    source={require('./assets/icons/chevron-back-pink.png')}
+                    source={require("./assets/icons/chevron-back-pink.png")}
                     className="h-[17] w-[10] ml-[30]"
                   />
                 </TouchableOpacity>
               ),
-              headerTitle: '',
-              headerTitleAlign: 'center',
+              headerTitle: "",
+              headerTitleAlign: "center",
               headerRight: () => (
                 <Text
                   className="pr-[30]"
                   style={{
-                    fontFamily: 'Inter_900Black',
+                    fontFamily: "Inter_900Black",
                   }}
                 >
                   Edit Product
@@ -231,21 +231,21 @@ function Appholder() {
             options={({ navigation }) => ({
               headerLeft: () => (
                 <TouchableOpacity
-                  onPress={() => navigation.navigate('DashboardTabScreen')}
+                  onPress={() => navigation.navigate("DashboardTabScreen")}
                 >
                   <Image
-                    source={require('./assets/icons/chevron-back-pink.png')}
+                    source={require("./assets/icons/chevron-back-pink.png")}
                     className="h-[17] w-[10] ml-[30]"
                   />
                 </TouchableOpacity>
               ),
-              headerTitle: '',
-              headerTitleAlign: 'center',
+              headerTitle: "",
+              headerTitleAlign: "center",
               headerRight: () => (
                 <Text
                   className="pr-[30]"
                   style={{
-                    fontFamily: 'Inter_900Black',
+                    fontFamily: "Inter_900Black",
                   }}
                 >
                   Add Product

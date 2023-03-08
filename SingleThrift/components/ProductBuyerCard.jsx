@@ -1,16 +1,38 @@
-import { TouchableOpacity, Image, View, Text } from 'react-native';
+import { TouchableOpacity, Image, View, Text } from "react-native";
+// jeane import
+import distance from "../actions/calculate";
 
-
-function ProductBuyerCard({ product, navigation }) {
+function ProductBuyerCard({ product, navigation, location }) {
   // function handleDetailProduct(id) {
   //   console.log(id);
   // }
+
+  //jeanee location start
+  // console.log(product.User.UserStoreAddress.latitude, "ini product");
+  // location dari product biar dinamis
+  let lat2 = product?.User?.UserStoreAddress?.latitude;
+  let lon2 = product?.User?.UserStoreAddress?.longitude;
+  // console.log(location, "ini product card");
+  let buyerLong = location?.coords?.longitude;
+  let buyerLat = location?.coords?.latitude;
+
+  // let calculateRange =
+  //   Math.round(getDistanceFromLatLonInKm(buyerLat, buyerLong, lat2, lon2)) +
+  //   "km";
+
+  let calculateRange =
+    Math.round(distance(buyerLat, buyerLong, lat2, lon2, "K")) + " km";
+  // console.log(calculateRange, "ini range");
+  if (calculateRange === NaN) {
+    return " ";
+  }
+  // jeane location end
 
   return (
     <>
       <TouchableOpacity
         onPress={() =>
-          navigation.navigate('ProductDetailScreen', {
+          navigation.navigate("ProductDetailScreen", {
             itemId: product?.id,
           })
         }
@@ -33,6 +55,7 @@ function ProductBuyerCard({ product, navigation }) {
           <View className="flex flex-row">
             <View className="w-3 h-3 rounded-full bg-red-100 mr-[5] mt-[3]" />
             <Text className="text-xs">{product?.User?.username}</Text>
+            <Text className="text-xs ml-5">{calculateRange}</Text>
           </View>
         </View>
       </TouchableOpacity>

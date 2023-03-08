@@ -16,7 +16,7 @@ import SpecifiedView from "../components/SpecifiedView";
 import * as Location from "expo-location";
 import distance, { calculateDistance } from "../actions/calculate";
 
-export default function HomeScreen({ navigation }) {
+export default function HomeScreenCopy({ navigation }) {
   const dispatch = useDispatch();
   const { isLoading, productsBuyer, error } = useSelector((state) => {
     return state.product;
@@ -32,12 +32,11 @@ export default function HomeScreen({ navigation }) {
   }, [search]);
 
   // jeane location start
-  const [location, setLocation] = useState();
-  const [products, setProducts] = useState();
   const [isFilter, setIsFilter] = useState(false);
+  const [products, setProducts] = useState();
+  const [location, setLocation] = useState();
   console.log(isFilter, "awal render");
   console.log(products, "ini produk");
-  // console.log(location, "awal render");
   // let sendLong;
   // let sendLat;
 
@@ -78,7 +77,7 @@ export default function HomeScreen({ navigation }) {
 
     // masukin jaraknya ke arr lalu sort
   };
-
+  console.log(isFilter, "iniii");
   // jeane location end
 
   return (
