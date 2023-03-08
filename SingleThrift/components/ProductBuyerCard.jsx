@@ -1,5 +1,6 @@
 import { TouchableOpacity, Image, View, Text } from 'react-native';
 
+
 function ProductBuyerCard({ product, navigation }) {
   // function handleDetailProduct(id) {
   //   console.log(id);
