@@ -8,12 +8,17 @@ import {
   BUYER_FETCHPRODUCT_PENDING,
   BUYER_FETCHPRODUCT_SUCCESS,
   BUYER_FETCHPRODUCT_FAIL,
+
   SELLER_FETCHPRODUCT_PENDING,
   SELLER_FETCHPRODUCT_SUCCESS,
   SELLER_FETCHPRODUCT_FAIL,
   FETCHPRODUCT_DETAILS_PENDING,
   FETCHPRODUCT_DETAILS_SUCCESS,
   FETCHPRODUCT_DETAILS_FAIL,
+
+  BUYER_FETCHCART_PENDING,
+  BUYER_FETCHCART_SUCCESS,
+
 } from './actionType';
 
 //LOGIN
@@ -79,7 +84,6 @@ export const fetchProductBuyer = () => {
       const accessToken = JSON.parse(
         await AsyncStorage.getItem('access_token')
       );
-      console.log(accessToken);
       const { data } = await axios({
         method: 'GET',
         url: `${BASE_URL_NGROK}/products`,
@@ -94,6 +98,7 @@ export const fetchProductBuyer = () => {
     }
   };
 };
+
 
 //SEllER PRODUCTS
 export const fetchProductSellerPending = () => {
@@ -124,10 +129,42 @@ export const fetchProductSeller = () => {
       const { data } = await axios({
         method: 'GET',
         url: `${BASE_URL_NGROK}/seller`,
+
+export const fetchCartPending = () => {
+  return {
+    type: BUYER_FETCHCART_PENDING,
+  };
+};
+export const fetchCartSuccess = (data) => {
+  return {
+    type: BUYER_FETCHCART_SUCCESS,
+    payload: data,
+  };
+};
+export const fetchCartFail = (error) => {
+  return {
+    type: BUYER_FETCHPRODUCT_FAIL,
+    payload: error,
+  };
+};
+export const fetchCartBuyer = () => {
+  // console.log('masuk');
+  return async (dispatch, getState) => {
+    try {
+      dispatch(fetchCartPending());
+      const accessToken = JSON.parse(
+        await AsyncStorage.getItem('access_token')
+      );
+      // console.log(accessToken);
+      const { data } = await axios({
+        method: 'GET',
+        url: `${BASE_URL_NGROK}/cart`,
+
         headers: {
           access_token: accessToken,
         },
       });
+
       console.log(data)
       dispatch(fetchProductSellerSuccess(data));
     } catch (error) {
@@ -177,6 +214,13 @@ export const fetchProductDetail = (id) => {
     } catch (error) {
       console.log(error);
       dispatch(fetchProductDetailFail(error));
+
+      // console.log(data);
+      dispatch(fetchCartSuccess(data));
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchCartFail(error));
+
     }
   };
 };

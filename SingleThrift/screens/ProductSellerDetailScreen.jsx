@@ -18,6 +18,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import moment from 'moment/moment';
 
 export default function ProductSellerDetailScreen({ route, navigation }) {
+
   const { id } = route.params
   const dispatch = useDispatch()
   console.log(id, `ini Idnya di detail screen`)
@@ -35,6 +36,7 @@ export default function ProductSellerDetailScreen({ route, navigation }) {
   const scrollX = useRef(new Animated.Value(0)).current;
   const { width: windowWidth } = useWindowDimensions();
   //END
+
   return (
     <SpecifiedView style={styles.centerContainer} className="bg-white h-[100%]">
 

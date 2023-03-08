@@ -16,6 +16,7 @@ export const BUYER_FETCHPRODUCT_PENDING = 'buyer/fetchProductPending';
 export const BUYER_FETCHPRODUCT_SUCCESS = 'buyer/fetchProductSuccess';
 export const BUYER_FETCHPRODUCT_FAIL = 'buyer/fetchProductFail';
 
+
 export const SELLER_FETCHPRODUCT_PENDING = 'seller/fetchProductPending';
 export const SELLER_FETCHPRODUCT_SUCCESS = 'seller/fetchProductSuccess';
 export const SELLER_FETCHPRODUCT_FAIL = 'seller/fetchProductFail';
@@ -24,5 +25,10 @@ export const FETCHPRODUCT_DETAILS_PENDING = 'details/fetchProductDetailPending';
 export const FETCHPRODUCT_DETAILS_SUCCESS = 'details/fetchProductDetailSuccess';
 export const FETCHPRODUCT_DETAILS_FAIL = 'details/fetchProductDetailFail';
 
-export const BASE_URL_NGROK = 'https://8588-139-228-111-126.ap.ngrok.io';
-// https://8588-139-228-111-126.ap.ngrok.io 
+
+export const BUYER_FETCHCART_PENDING = 'buyer/fetchCartPending';
+export const BUYER_FETCHCART_SUCCESS = 'buyer/fetchCartSuccess';
+export const BUYER_FETCHCART_FAIL = 'buyer/fetchCartFail';
+
+export const BASE_URL_NGROK = 'https://a376-120-188-66-26.ap.ngrok.io';
+
