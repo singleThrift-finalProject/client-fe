@@ -21,7 +21,7 @@ import {
   PAYMENT_GETCITY_SUCCESS,
   FETCH_CATEGORY_FAIL,
   FETCH_CATEGORY_SUCCESS,
-  FETCH_CATEGORY_PENDING
+  FETCH_CATEGORY_PENDING,
 } from './actionType';
 
 //LOGIN
@@ -129,7 +129,6 @@ export const fetchProductSellerFail = (error) => {
   };
 };
 export const fetchProductSeller = () => {
-  
   return async (dispatch, getState) => {
     try {
       dispatch(fetchProductSellerPending());
@@ -240,7 +239,6 @@ export const fetchProductDetail = (id) => {
   };
 };
 
-
 // Bagas
 export const getCityPending = () => {
   return {
@@ -271,6 +269,15 @@ export const getCity = () => {
         method: 'GET',
         url: `${BASE_URL_NGROK}/payment/cityId`,
         // url: 'https://06ca-139-228-111-126.ap.ngrok.io/payment/cityId',
+      });
+      // console.log(data);
+      dispatch(getCitySuccess(data));
+    } catch (error) {
+      console.log(error);
+      dispatch(getCityFail(error));
+    }
+  };
+};
 
 //BUYER PRODUCTS
 export const fetchCategoryPending = () => {
@@ -291,7 +298,7 @@ export const fetchCategoryFail = (error) => {
   };
 };
 export const fetchCategory = () => {
-    let baseUrl = `${BASE_URL_NGROK}/categories`;
+  let baseUrl = `${BASE_URL_NGROK}/categories`;
 
   return async (dispatch, getState) => {
     try {
@@ -308,15 +315,6 @@ export const fetchCategory = () => {
         },
       });
 
-      // console.log(data);
-      dispatch(getCitySuccess(data));
-    } catch (error) {
-      console.log(error);
-      dispatch(getCityFail(error));
-    }
-  };
-};
-
       dispatch(fetchCategorySuccess(data));
     } catch (error) {
       console.log(error);
@@ -324,4 +322,3 @@ export const fetchCategory = () => {
     }
   };
 };
-
