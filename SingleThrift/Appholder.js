@@ -12,6 +12,8 @@ import DashboardTabScreen from './navigators/DashboardTabScreen';
 import ProductSellerDetailScreen from './screens/ProductSellerDetailScreen';
 import EditProductScreen from './screens/EditProductScreen';
 import AddProductScreen from './screens/AddProductScreen';
+import AdressPaymentScreen from './screens/addressPayment';
+import PaymentMidtrans from './screens/paymentMidtrans';
 
 function Appholder() {
   const Stack = createNativeStackNavigator();
@@ -132,6 +134,39 @@ function Appholder() {
           <Stack.Screen
             name="CartScreen"
             component={CartScreen}
+            options={({ navigation }) => ({
+              headerLeft: () => (
+                <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+                  <Image
+                    source={require('./assets/icons/chevron-back-pink.png')}
+                    className="h-[17] w-[10] ml-[30]"
+                  />
+                </TouchableOpacity>
+              ),
+              headerTitle: '',
+              headerTitleAlign: 'center',
+              headerRight: () => (
+                <Text
+                  className="pr-[30]"
+                  style={{
+                    fontFamily: 'Inter_900Black',
+                  }}
+                >
+                  Cart List
+                </Text>
+              ),
+            })}
+          />
+          <Stack.Screen
+            name="PaymentMidtrans"
+            component={PaymentMidtrans}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="AdressPaymentScreen"
+            component={AdressPaymentScreen}
             options={({ navigation }) => ({
               headerLeft: () => (
                 <TouchableOpacity onPress={() => navigation.navigate('Home')}>
