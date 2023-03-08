@@ -4,17 +4,19 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
-  Button, Image, Platform
-} from 'react-native';
-import SpecifiedView from '../components/SpecifiedView';
-import React, { useState, useEffect } from 'react';
-import { Picker } from '@react-native-picker/picker';
-import * as ImagePicker from 'expo-image-picker';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import axios from 'axios';
-import { BASE_URL_NGROK } from '../actions/actionType';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCategory } from '../actions/actionCreator';
+  Button,
+  Image,
+  Platform,
+} from "react-native";
+import SpecifiedView from "../components/SpecifiedView";
+import React, { useState, useEffect } from "react";
+import { Picker } from "@react-native-picker/picker";
+import * as ImagePicker from "expo-image-picker";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
+import { BASE_URL_NGROK } from "../actions/actionType";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCategory, fetchProductSeller } from "../actions/actionCreator";
 
 export default function AddProductScreen({ navigation }) {
   const dispatch = useDispatch();
@@ -22,7 +24,7 @@ export default function AddProductScreen({ navigation }) {
     return state.category;
   });
 
-  console.log(categories)
+  console.log(categories);
   useEffect(() => {
     (async () => {
       dispatch(fetchCategory());
@@ -33,10 +35,10 @@ export default function AddProductScreen({ navigation }) {
   const [selectedCondition, setSelectedCondition] = useState();
   const [selectedCategory, setSelectedCategory] = useState();
   const [inputValues, setInputValues] = useState({
-    name: '',
-    price: '',
-    description: '',
-    weight: ''
+    name: "",
+    price: "",
+    description: "",
+    weight: "",
   });
   const [image, setImage] = useState([]);
   // console.log(image,`ini sebelum masuk axios`)
@@ -45,42 +47,39 @@ export default function AddProductScreen({ navigation }) {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsMultipleSelection: true,
-      allowsEditing: true,
+      // allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
     });
 
-    console.log(result, `<<<<<<<<<<<< RESULTTTTTTTTTT`);
-
+    console.log(result.assets, `<<<<<<<<<<<< RESULTTTTTTTTTT`);
+    
     if (!result.canceled) {
-      const uri = result.assets.map((perData) => {
+      console.log(result.assets);
+      const thisUri = result.assets.map((perData) => {
+        console.log(perData.uri, `ini URI<<<<<<<<<<<<<<<<<<<<<<<<<`);
         return perData.uri
       });
-      // const fileName = uri.map((perData) => {
-      //   return perData.split('/').pop()
-      // })
-      console.log(uri, `ini URI<<<<<<<<<<<<<<<<<<<<<<<<<`)
-      // console.log(fileName, `iniFileName<<<<<<<<<<<<<<<<<<<<<<<<<`)
-      const formData = new FormData()
-      // for(let i = 0; i < uri.length;i++){
-      // }
-      formData.append("imageUrl", {
-        uri:uri,
-        name: "gambar 1",
-        type: "image/jpeg"
-      });
-      formData.append('name', inputValues.name)
-      formData.append('price', inputValues.price)
-      formData.append('description', inputValues.description)
-      formData.append('weight', inputValues.weight)
-      formData.append('condition', selectedCondition)
-      formData.append('CategoryId', selectedCategory)
-      setImage(uri)
-      setForm(formData)
+        const formData = new FormData();
+        formData.append("name", inputValues.name);
+        formData.append("price", inputValues.price);
+        formData.append("description", inputValues.description);
+        formData.append("weight", inputValues.weight);
+        formData.append("condition", selectedCondition);
+        formData.append("CategoryId", selectedCategory);
+        for (let i =0; i < result.assets.length; i++) {
+          formData.append("imageUrl", {
+            uri: result.assets[i].uri,
+            name: result.assets[i].uri.split('/').pop(),
+            type: "image/jpeg",
+          });
+        }
+          setImage(thisUri);
+          setForm(formData);
     }
   };
-
-  console.log(form, `ini form nya>>>>>>>>>>>>>>>>>>>>>>>>>>`)
+  
+  console.log(form._parts, `ini form nya>>>>>>>>>>>>>>>>>>>>>>>>>>`);
   const handleInputChange = (fieldName, value) => {
     setInputValues({
       ...inputValues,
@@ -91,32 +90,26 @@ export default function AddProductScreen({ navigation }) {
   const handleSubmit = async () => {
     try {
       const accessToken = JSON.parse(
-        await AsyncStorage.getItem('access_token')
+        await AsyncStorage.getItem("access_token")
       );
-      //   const { data } = await axios({
-      //   method: "POST",
-      //   url: `${BASE_URL_NGROK}/products`,
-      //   headers: {
-      //     access_token: accessToken,
-      //   },
-      //   data: form
-      // });
       await axios.post(`${BASE_URL_NGROK}/products`, form, {
         headers: {
           access_token: accessToken,
-          "Content-Type": "multipart/form-data"
+          "Content-Type": "multipart/form-data",
         },
         accept: "application/json",
-        'Accept-Language':'en-Us,en;q=0.8'
-      })
-      console.log(`masuk axios`)
-      setInputValues({
-        name: '',
-        price: '',
-        description: '',
-        weight: ''
+        "Accept-Language": "en-Us,en;q=0.8",
       });
-      navigation.navigate('DashboardTabScreen'); alert(`Berhasil menambahkan product`);
+      console.log(`masuk axios`);
+      setInputValues({
+        name: "",
+        price: "",
+        description: "",
+        weight: "",
+      });
+       dispatch(fetchProductSeller());
+      navigation.navigate("DashboardTabScreen");
+      alert(`Berhasil menambahkan product`);
     } catch (error) {
       console.log(error.name, `ajajajaja`);
     }
@@ -129,25 +122,25 @@ export default function AddProductScreen({ navigation }) {
             <TextInput
               className="py-[15] px-[20] placeholder:font-extrabold placeholder:text-primary shadow-xl shadow-gray-400 border border-inputStroke bg-white rounded-3xl"
               placeholder="Name"
-              onChangeText={(value) => handleInputChange('name', value)}
+              onChangeText={(value) => handleInputChange("name", value)}
               value={inputValues.name}
             />
             <TextInput
               className="py-[15] px-[20] placeholder:font-extrabold placeholder:text-primary shadow-xl shadow-gray-400 border border-inputStroke bg-white rounded-3xl"
               placeholder="Price"
-              onChangeText={(value) => handleInputChange('price', value)}
+              onChangeText={(value) => handleInputChange("price", value)}
               value={inputValues.price}
             />
             <TextInput
               className="py-[15] px-[20] placeholder:font-extrabold placeholder:text-primary shadow-xl shadow-gray-400 border border-inputStroke bg-white rounded-3xl"
               placeholder="Decription"
-              onChangeText={(value) => handleInputChange('description', value)}
+              onChangeText={(value) => handleInputChange("description", value)}
               value={inputValues.description}
             />
             <TextInput
               className="py-[15] px-[20] placeholder:font-extrabold placeholder:text-primary shadow-xl shadow-gray-400 border border-inputStroke bg-white rounded-3xl"
               placeholder="Weight"
-              onChangeText={(value) => handleInputChange('weight', value)}
+              onChangeText={(value) => handleInputChange("weight", value)}
               value={inputValues.weight}
             />
             <View className="rounded-3xl overflow-hidden bg-white shadow-xl shadow-gray-400 border border-inputStroke py-[3] pl-[3] mb-[15]">
@@ -172,25 +165,38 @@ export default function AddProductScreen({ navigation }) {
                 }
               >
                 <Picker.Item label="Select Category" enabled={true} />
-                {
-                  categories?.map((perData) => (
-                    <Picker.Item label={perData.name} value={perData.id} key={perData.id} />
-                  ))
-                }
+                {categories?.map((perData) => (
+                  <Picker.Item
+                    label={perData.name}
+                    value={perData.id}
+                    key={perData.id}
+                  />
+                ))}
               </Picker>
             </View>
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
               {image ? (
                 image?.map((perData) => (
                   <Image
                     source={{ uri: perData }}
-                    style={{ marginBottom: 10, marginTop: 10, width: 200, height: 200, borderRadius: 20 }}
+                    style={{
+                      marginBottom: 10,
+                      marginTop: 10,
+                      width: 200,
+                      height: 200,
+                      borderRadius: 20,
+                    }}
                   />
                 ))
               ) : (
                 <></>
-              )
-              }
+              )}
             </View>
             <View className="flex flex-row justify-center">
               <TouchableOpacity
@@ -200,7 +206,7 @@ export default function AddProductScreen({ navigation }) {
                 <Text
                   className="text-[14] text-center  text-primary"
                   style={{
-                    fontFamily: 'Inter_900Black',
+                    fontFamily: "Inter_900Black",
                   }}
                 >
                   Upload Image
@@ -210,12 +216,12 @@ export default function AddProductScreen({ navigation }) {
             <View className="flex flex-row justify-between">
               <TouchableOpacity
                 className="py-[20] rounded-3xl w-[45%] bg-white shadow-lg shadow-primary"
-                onPress={() => navigation.push('DashboardTabScreen')}
+                onPress={() => navigation.push("DashboardTabScreen")}
               >
                 <Text
                   className="text-[14] text-center  text-primary"
                   style={{
-                    fontFamily: 'Inter_900Black',
+                    fontFamily: "Inter_900Black",
                   }}
                 >
                   Cancel
@@ -228,7 +234,7 @@ export default function AddProductScreen({ navigation }) {
                 <Text
                   className="text-[14] text-center  text-secondary"
                   style={{
-                    fontFamily: 'Inter_900Black',
+                    fontFamily: "Inter_900Black",
                   }}
                 >
                   Update
