@@ -31,6 +31,8 @@ export default function SignUpScreen({ navigation }) {
     });
   };
 
+  console.log(selectedRole);
+
   const handleSubmit = async () => {
     try {
       const { data } = await axios.post(`${BASE_URL_NGROK}/users/register`, {
@@ -117,6 +119,7 @@ export default function SignUpScreen({ navigation }) {
                   setSelectedRole(itemValue)
                 }
               >
+                <Picker.Item label="Select Role" enabled={true} />
                 <Picker.Item label="Buyer" value="buyer" />
                 <Picker.Item label="Seller" value="seller" />
               </Picker>
