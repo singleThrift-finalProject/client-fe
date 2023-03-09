@@ -36,4 +36,5 @@ export const PAYMENT_GETCITY_PENDING = "payment/getCityPending";
 export const PAYMENT_GETCITY_SUCCESS = "payment/getCitySuccess";
 export const PAYMENT_GETCITY_FAIL = "payment/getCityFail";
 
-export const BASE_URL_NGROK = "https://a74a-139-228-111-126.ap.ngrok.io";
+export const BASE_URL_NGROK =
+  "https://dd49-2001-448a-2099-5bb-61e7-e24f-76-cef7.ap.ngrok.io";

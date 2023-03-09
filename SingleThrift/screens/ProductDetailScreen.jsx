@@ -7,28 +7,29 @@ import {
   Image,
   useWindowDimensions,
   Text,
-  TouchableOpacity
-} from 'react-native';
-import SpecifiedView from '../components/SpecifiedView';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import axios from 'axios';
-import { BASE_URL_NGROK } from '../actions/actionType';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { fetchCartBuyer } from '../actions/actionCreator';
-import React, { useRef, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchProductDetail } from '../actions/actionCreator';
-import moment from 'moment/moment';
+  TouchableOpacity,
+} from "react-native";
+import SpecifiedView from "../components/SpecifiedView";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import axios from "axios";
+import { BASE_URL_NGROK } from "../actions/actionType";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { fetchCartBuyer } from "../actions/actionCreator";
+import React, { useRef, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProductDetail } from "../actions/actionCreator";
+import moment from "moment/moment";
 import { FormatRupiah } from "@arismun/format-rupiah";
+import { Auth } from "aws-amplify";
 
 export default function ProductDetailScreen({ route, navigation }) {
-  const { id } = route.params
-  const dispatch = useDispatch()
-  console.log(id, `ini Idnya di detail screen`)
+  const { id } = route.params;
+  const dispatch = useDispatch();
+  console.log(id, `ini Idnya di detail screen`);
   const { isLoading, productDetails, error } = useSelector((state) => {
     return state.productDetail;
   });
-  
+
   useEffect(() => {
     dispatch(fetchProductDetail(id));
   }, []);
@@ -37,16 +38,15 @@ export default function ProductDetailScreen({ route, navigation }) {
   const { width: windowWidth } = useWindowDimensions();
   //END
 
-
   const handleAddToCart = async () => {
     try {
       // console.log('masuk handle', itemId);
       const accessToken = JSON.parse(
-        await AsyncStorage.getItem('access_token')
+        await AsyncStorage.getItem("access_token")
       );
       // console.log(accessToken);
       const { data } = await axios({
-        method: 'POST',
+        method: "POST",
         url: `${BASE_URL_NGROK}/cart/${itemId}`,
         headers: {
           access_token: accessToken,
@@ -54,16 +54,42 @@ export default function ProductDetailScreen({ route, navigation }) {
       });
       // console.log(data);
       dispatch(fetchCartBuyer());
-      navigation.navigate('HomeTabScreen');
+      navigation.navigate("HomeTabScreen");
     } catch (error) {
       alert(error);
     }
   };
 
+  // jeane chat start
+  const [user, setUser] = useState(null);
+  // loop through chat.user.items and find a user thats not us (Authenticated user)
+  useEffect(() => {
+    const fetchUser = async () => {
+      const authUser = await Auth.currentAuthenticatedUser();
+      console.log(authUser.attributes.sub, "ini yg fetch");
+      const userItem = chat.Users.items.find(
+        (item) => item.user.id !== authUser.attributes.sub
+      );
+      setUser(userItem?.user);
+    };
+
+    fetchUser();
+  }, []);
+
+  const goToChat = () => {
+    navigation.navigate("Chat", {
+      id: "76ac200f-4724-4226-8084-d4084417b98d",
+      name: user?.name,
+    });
+  };
+  console.log(user, "ini user");
+  // 76ac200f-4724-4226-8084-d4084417b98d
+  // jeane chat end
+
   return (
     <SpecifiedView style={styles.centerContainer} className="bg-white h-[100%]">
       <ScrollView className="p-[30]">
-      <View style={styles.scrollContainer}>
+        <View style={styles.scrollContainer}>
           <ScrollView
             horizontal={true}
             pagingEnabled
@@ -84,10 +110,7 @@ export default function ProductDetailScreen({ route, navigation }) {
           >
             {productDetails?.Images?.map((el, imageIndex) => {
               return (
-                <View
-                  style={{ width: 300, height: 250 }}
-                  key={imageIndex}
-                >
+                <View style={{ width: 300, height: 250 }} key={imageIndex}>
                   <ImageBackground
                     source={{ uri: el.imageUrl }}
                     style={styles.card}
@@ -115,16 +138,12 @@ export default function ProductDetailScreen({ route, navigation }) {
               );
             })}
           </View>
-
-
         </View>
         <View className="py-[30] gap-[15]">
-          <Text className="font-extrabold text-lg">
-            {productDetails?.name}
-          </Text>
+          <Text className="font-extrabold text-lg">{productDetails?.name}</Text>
           <View className="flex flex-row flex-wrap items-center">
             <Text className="font-extrabold pr-[15] text-secondary text-xl">
-            <FormatRupiah value={productDetails?.price}/>
+              <FormatRupiah value={productDetails?.price} />
               {/* Rp {productDetails?.price} */}
             </Text>
             <Text className="text-sm">{productDetails?.condition}</Text>
@@ -137,7 +156,10 @@ export default function ProductDetailScreen({ route, navigation }) {
                 marginRight: 15,
               }}
             />
-            <Text className="text-sm">{moment(productDetails?.createdAt).startOf('hour').fromNow()} by {productDetails?.User?.username}</Text>
+            <Text className="text-sm">
+              {moment(productDetails?.createdAt).startOf("hour").fromNow()} by{" "}
+              {productDetails?.User?.username}
+            </Text>
           </View>
           <View className="flex flex-row items-center">
             <Ionicons
@@ -180,7 +202,9 @@ export default function ProductDetailScreen({ route, navigation }) {
                 marginRight: 15,
               }}
             />
-            <Text className="text-sm  mr-[30] pb-[10]">{productDetails?.User?.address}</Text>
+            <Text className="text-sm  mr-[30] pb-[10]">
+              {productDetails?.User?.address}
+            </Text>
           </View>
           <View className="flex items-start pt-[15]">
             <Text className="text-lg font-extrabold">Seller Profile</Text>
@@ -188,9 +212,14 @@ export default function ProductDetailScreen({ route, navigation }) {
               <View className="w-10 h-10 rounded-full bg-red-100 mr-[15]" />
               <View className="">
                 <Text className="text-md pb-[5] font-extrabold text-secondary">
-                {productDetails?.User?.username}
+                  {productDetails?.User?.username}
                 </Text>
-                <Text className="text-xs">join {moment(productDetails?.User?.createdAt).startOf('hour').fromNow()}</Text>
+                <Text className="text-xs">
+                  join{" "}
+                  {moment(productDetails?.User?.createdAt)
+                    .startOf("hour")
+                    .fromNow()}
+                </Text>
               </View>
             </View>
           </View>
@@ -211,7 +240,7 @@ export default function ProductDetailScreen({ route, navigation }) {
             <Text
               className="text-[14] text-center text-secondaryLight"
               style={{
-                fontFamily: 'Inter_900Black',
+                fontFamily: "Inter_900Black",
               }}
             >
               Add to Cart
@@ -219,7 +248,7 @@ export default function ProductDetailScreen({ route, navigation }) {
           </TouchableOpacity>
           <TouchableOpacity
             className="py-[20] flex flex-row justify-center items-center rounded-3xl bg-secondaryLight shadow-lg shadow-secondary"
-            onPress={() => navigation.push('SignInScreen')}
+            onPress={goToChat}
           >
             <Ionicons
               name="chatbubbles-outline"
@@ -232,7 +261,7 @@ export default function ProductDetailScreen({ route, navigation }) {
             <Text
               className="text-[14] text-center text-secondary"
               style={{
-                fontFamily: 'Inter_900Black',
+                fontFamily: "Inter_900Black",
               }}
             >
               Chat Seller
@@ -243,8 +272,6 @@ export default function ProductDetailScreen({ route, navigation }) {
     </SpecifiedView>
   );
 }
-
-
 
 const styles = StyleSheet.create({
   centerContainer: {
