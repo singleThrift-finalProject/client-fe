@@ -1,17 +1,17 @@
 <script>
-import { mapActions } from "pinia";
-import { useAppStore } from "../stores/counter";
+import { mapActions } from 'pinia';
+import { useAppStore } from '../stores/counter';
 export default {
   data() {
     return {
       form: {
-        email: "",
-        password: "",
+        email: '',
+        password: '',
       },
     };
   },
   methods: {
-    ...mapActions(useAppStore, ["doRegister"]),
+    ...mapActions(useAppStore, ['doRegister']),
     register() {
       this.doRegister(this.form);
     },
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <template>
-  <section class="mt-40">
+  <section class="">
     <main
       aria-label="Main"
       class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6"
@@ -39,7 +39,7 @@ export default {
             </label>
 
             <input
-            type="email"
+              type="email"
               v-model="form.email"
               class="mt-1 h-8 w-full rounded-md border border-solid border-gray-900 bg-white text-sm text-gray-700 shadow-sm"
             />
@@ -54,7 +54,7 @@ export default {
             </label>
 
             <input
-            type="password"
+              type="password"
               v-model="form.password"
               class="mt-1 h-8 w-full rounded-md border border-solid border-gray-900 bg-white text-sm text-gray-700 shadow-sm"
             />
